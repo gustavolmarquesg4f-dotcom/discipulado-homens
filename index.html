@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discipulado de Homens | Homem de Verdade</title>
+  <meta name="description" content="Inscrição para o Discipulado de Homens - Homem de Verdade">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge">2º Semestre 2026</span>
+        <h1>Homens de Verdade</h1>
+        <h2>Escola de Hombridade Cristã</h2>
+        <p class="lead">Uma jornada para homens que desejam crescer em Cristo, liderar sua casa, servir à Igreja e deixar um legado.</p>
+        <a href="#inscricao" class="cta">Fazer minha inscrição</a>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+        <h2>O que vamos viver neste semestre?</h2>
+        <p>
+          Neste segundo semestre iniciaremos uma jornada baseada no curso <strong>Homem de Verdade</strong>,
+          de Edwin Louis Cole, aplicando cada princípio à vida real do homem cristão: casa, trabalho, igreja,
+          caráter, liderança, família, finanças e propósito.
+        </p>
+
+        <div class="cards">
+          <div class="card"><h3>Casa</h3><p>Casamento, filhos, liderança familiar e presença emocional.</p></div>
+          <div class="card"><h3>Trabalho</h3><p>Ética, pressão, carreira, finanças, propósito e maturidade.</p></div>
+          <div class="card"><h3>Igreja</h3><p>Serviço, discipulado, autoridade, submissão e legado espiritual.</p></div>
+          <div class="card"><h3>Perfis</h3><p>Tubarão, Águia, Gato e Lobo/Castor aplicados à vida prática.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="container">
+        <p>“O mundo não precisa de homens perfeitos. Precisa de homens segundo o coração de Deus.”</p>
+      </div>
+    </section>
+
+    <section id="inscricao" class="form-section">
+      <div class="container form-grid">
+        <div class="form-text">
+          <h2>Inscrição</h2>
+          <p>Preencha seus dados para confirmar o interesse em participar. Nossa equipe entrará em contato pelo WhatsApp.</p>
+          <ul>
+            <li>Encontros de formação masculina cristã</li>
+            <li>Aplicação prática para casa, trabalho e igreja</li>
+            <li>Desafios semanais</li>
+            <li>Ambiente de sigilo, comunhão e crescimento</li>
+          </ul>
+        </div>
+
+        <form id="formInscricao">
+          <label>Nome completo *</label>
+          <input type="text" name="nome" required />
+
+          <label>Data de nascimento *</label>
+          <input type="date" name="nascimento" required />
+
+          <label>WhatsApp *</label>
+          <input type="tel" name="whatsapp" placeholder="(61) 99999-9999" required />
+
+          <label>E-mail</label>
+          <input type="email" name="email" />
+
+          <label>Estado civil *</label>
+          <select name="estadoCivil" required>
+            <option value="">Selecione</option>
+            <option>Solteiro</option>
+            <option>Casado</option>
+            <option>Noivo</option>
+            <option>Divorciado</option>
+            <option>Viúvo</option>
+          </select>
+
+          <label>Igreja onde congrega *</label>
+          <input type="text" name="igreja" required />
+
+          <label>Qual sua maior expectativa para este discipulado? *</label>
+          <textarea name="expectativa" rows="4" required></textarea>
+
+          <label>Pedido de oração ou área que deseja desenvolver</label>
+          <textarea name="oracao" rows="4"></textarea>
+
+          <div class="check">
+            <input type="checkbox" name="compromisso" required />
+            <span>Comprometo-me a participar dos encontros e buscar colocar em prática os ensinamentos.</span>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" name="imagem" />
+            <span>Autorizo o uso da minha imagem em fotos e vídeos do ministério.</span>
+          </div>
+
+          <button type="submit">Enviar inscrição</button>
+          <p id="mensagem"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Ministério de Homens | Homens de Verdade</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
