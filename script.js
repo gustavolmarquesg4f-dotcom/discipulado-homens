@@ -2,7 +2,7 @@ const form = document.getElementById("formInscricao");
 const mensagem = document.getElementById("mensagem");
 
 // Cole aqui a URL do Google Apps Script para enviar as inscrições para planilha.
-const GOOGLE_SCRIPT_URL = "";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6RvO55owC7ahbtokyiauQUWjeFTV7R6m94q3B2WqxBbmovDjZfIJjB2h4vSH2_EB3/exec";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
