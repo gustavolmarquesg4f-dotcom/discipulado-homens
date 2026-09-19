@@ -336,8 +336,22 @@ function showOnly(el){
  [document.getElementById('intro'),document.getElementById('quiz'),document.getElementById('result')].forEach(function(x){x.classList.remove('active')});
  el.classList.add('active');document.querySelector('.card').scrollIntoView({behavior:'smooth',block:'start'});
 }
+function shuffleAnswers(q){
+ var originalBest=q.best;
+ var tagged=q.answers.map(function(a,idx){return {a:a,idx:idx}});
+ for(var i=tagged.length-1;i>0;i--){
+  var j=Math.floor(Math.random()*(i+1));
+  var tmp=tagged[i];tagged[i]=tagged[j];tagged[j]=tmp;
+ }
+ q.answers=tagged.map(function(x){return x.a});
+ q.best=tagged.findIndex(function(x){return x.idx===originalBest});
+ return q;
+}
 function start(){
- Q=buildQuestions();answersChosen=Array(Q.length).fill(null);index=0;renderQuestion();
+ Q=buildQuestions().map(shuffleAnswers);
+ answersChosen=Array(Q.length).fill(null);
+ index=0;
+ renderQuestion();
 }
 function renderQuestion(){
  showOnly(document.getElementById('quiz'));setProgress();
