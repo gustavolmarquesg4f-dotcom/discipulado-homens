@@ -1,53 +1,415 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5efe4">
 <title>Sala de Pressão — Homens de Verdade</title>
 <style>
-:root{--bg:#071019;--p:#111c26;--g:#c99a55;--g2:#f2cf88;--t:#f7f2e8;--m:#a8b4bc;--l:#293a46}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#2b3b49,#0c151d 35%,#060b10 70%);color:var(--t);font-family:Arial,sans-serif;min-height:100vh}
-.app{max-width:790px;margin:auto;padding:20px 16px 50px}.brand{color:var(--g2);font-size:12px;letter-spacing:.18em;font-weight:900;text-transform:uppercase}
-.hero{padding:44px 0 22px}.ey{color:var(--g2);font-size:12px;letter-spacing:.16em;font-weight:900;text-transform:uppercase}
-h1,h2,h3{font-family:Georgia,serif}h1{font-size:clamp(42px,10vw,76px);line-height:.92;margin:11px 0 16px;letter-spacing:-.04em}.lead{font-size:18px;line-height:1.55;color:#e6ded2}
-.lock{color:var(--m);font-size:13px;line-height:1.5;border-left:3px solid var(--g);padding-left:11px}.card{background:linear-gradient(#111d27,#0a1219);border:1px solid #604b2e;border-radius:24px;padding:21px;box-shadow:0 25px 70px #0008}
-.progress{display:flex;gap:6px;margin-bottom:23px}.bar{height:5px;flex:1;background:#22313b;border-radius:20px}.bar.on{background:linear-gradient(90deg,var(--g),var(--g2))}
-.step{display:none}.step.active{display:block}.num{color:var(--g2);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}h2{font-size:31px;line-height:1.08;margin:8px 0 10px}
-.ctx{color:#ded6ca;line-height:1.58;font-size:16px}.q{color:var(--g2);font-weight:900;margin:18px 0 11px}.ans{display:grid;gap:10px}.a{border:1px solid var(--l);background:#101a23;color:var(--t);border-radius:15px;padding:14px;text-align:left;font-size:15px;line-height:1.4;cursor:pointer}.a.sel{border-color:var(--g);background:#1b2731}.a b{color:var(--g2);margin-right:7px}
-.nav{display:flex;gap:10px;margin-top:19px}.btn{border:0;border-radius:13px;padding:14px 16px;font-weight:900;cursor:pointer}.pri{flex:1;background:linear-gradient(135deg,var(--g),var(--g2));color:#171208}.sec{background:#18242e;color:var(--t);border:1px solid var(--l)}.disabled{opacity:.4;pointer-events:none}
-.note{font-size:12px;color:var(--m);margin-top:10px}.heroR{border:1px solid var(--g);border-radius:19px;padding:18px;background:#101a22}.heroR .big{color:var(--g2);font-weight:900}.map{display:grid;gap:9px;margin:17px 0}.metric{background:#0d161e;border:1px solid var(--l);border-radius:13px;padding:12px}.mt{display:flex;justify-content:space-between;font-weight:800;font-size:13px}.track{height:7px;background:#21303a;border-radius:10px;margin-top:7px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--g),var(--g2))}
-.call{border-left:3px solid var(--g);padding:12px;background:#0f1820;border-radius:0 12px 12px 0;color:#ddd5ca;line-height:1.5}.rev{border:1px solid var(--l);border-radius:16px;overflow:hidden;margin:11px 0;background:#0c151c}.rh{padding:14px;background:#121e27;font-weight:900}.rb{padding:15px;line-height:1.55;color:#ddd5ca}.your{color:var(--g2);font-weight:900}.bib{margin-top:10px;padding:12px;background:#111b24;border-radius:12px;border:1px solid #4c3d29}.bib b{color:var(--g2)}
-.decision{margin-top:20px;border:1px solid var(--g);border-radius:17px;padding:17px}.decision input{width:100%;background:#081018;border:1px solid var(--l);border-radius:12px;color:var(--t);padding:13px;margin-top:7px;font:inherit}
-footer{text-align:center;color:#71818c;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:22px}
-</style></head><body><main class="app">
-<div class="brand">Homens de Verdade · Aula 3</div>
-<section class="hero"><div class="ey">12 situações reais · gabarito só no final</div><h1>Sala de Pressão</h1><p class="lead">Você sabe o que acredita. A pergunta é: <b>o que você faria quando fazer o certo começa a custar?</b></p><p class="lock">🔒 Suas respostas não são enviadas nem salvas. Responda o que você realmente faria, não o que parece mais “cristão”.</p></section>
-<section class="card"><div id="prog" class="progress"></div>
-<div id="intro" class="step active"><div class="num">Antes de começar</div><h2>Não existe “nota de espiritualidade”.</h2><p class="ctx">O teste mostra como você reagiu às situações apresentadas e, no final, confronta cada escolha com princípios bíblicos. Seja verdadeiro.</p><div class="nav"><button class="btn pri" onclick="start()">Começar</button></div></div>
-<div id="quiz" class="step"><div class="num" id="qn"></div><h2 id="qt"></h2><p class="ctx" id="qc"></p><div class="q">O que você faria?</div><div id="answers" class="ans"></div><div class="nav"><button class="btn sec" onclick="back()">Voltar</button><button id="next" class="btn pri disabled" onclick="advance()">Continuar</button></div><div class="note">Escolha primeiro. A análise bíblica aparece somente no final.</div></div>
-<div id="result" class="step"><div class="num">Seu resultado</div><h2>Mapa de Pressão</h2><div class="heroR"><div id="score" class="big"></div><h3 id="topTitle"></h3><p id="topText" class="ctx"></p></div><div id="map" class="map"></div><div class="call"><b>Importante:</b> isto não define seu caráter. É uma lente sobre suas escolhas nestas 12 situações.</div><h2 style="margin-top:25px">Agora, à luz da Bíblia</h2><p class="ctx">Veja sua resposta, o princípio em disputa e a alternativa mais madura para o cenário.</p><div id="reviews"></div>
-<div class="decision"><div class="num">Decisão final</div><h3>Diante de Deus, decido que não negociarei…</h3><input id="x" placeholder="Ex.: minha integridade"><h3>…para obter…</h3><input id="y" placeholder="Ex.: aprovação, dinheiro, prazer"><div class="nav"><button class="btn pri" onclick="copyC()">Copiar compromisso</button><button class="btn sec" onclick="restart()">Refazer</button></div></div></div>
-</section><footer>Caráter hoje · legado sempre</footer></main>
+:root{
+ --paper:#f5efe4;--paper2:#fffaf1;--ink:#172633;--navy:#17344a;--navy2:#244b64;
+ --gold:#a97832;--gold2:#d9b56c;--muted:#667581;--line:#d8cfbf;--sage:#71866e;
+ --white:#fffdfa;--rose:#9c655b;--shadow:0 18px 50px rgba(40,52,60,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+ radial-gradient(circle at 90% -10%,#fff8df 0,transparent 28%),
+ linear-gradient(180deg,#f9f4ea 0,#efe6d8 100%);
+ color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+.app{max-width:820px;margin:auto;padding:18px 16px 54px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--navy);font-size:11px;letter-spacing:.17em;font-weight:900;text-transform:uppercase}
+.crest{width:36px;height:36px;border:1px solid #c7a76b;border-radius:12px;display:grid;place-items:center;background:#fff9ed;color:var(--gold)}
+.hero{padding:38px 0 22px;border-bottom:1px solid rgba(169,120,50,.18)}
+.ey{color:var(--gold);font-size:12px;letter-spacing:.17em;font-weight:900;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
+h1{font-size:clamp(44px,10vw,76px);line-height:.93;letter-spacing:-.045em;margin:11px 0 16px;color:var(--navy)}
+.lead{font-size:18px;line-height:1.58;color:#344752;max-width:700px}
+.lock{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:13px;line-height:1.5;background:rgba(255,255,255,.52);padding:12px 13px;border-radius:13px;border:1px solid #e3d9c9}
+.card{margin-top:22px;background:rgba(255,253,248,.95);border:1px solid #dacdbb;border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.progress{display:flex;gap:6px;margin:0 0 24px}.bar{height:5px;flex:1;background:#e3ddd2;border-radius:999px}.bar.on{background:linear-gradient(90deg,var(--navy2),var(--gold2))}
+.step{display:none}.step.active{display:block;animation:fade .2s ease}
+@keyframes fade{from{opacity:.2;transform:translateY(6px)}to{opacity:1;transform:none}}
+.num{color:var(--gold);font-weight:900;font-size:12px;letter-spacing:.15em;text-transform:uppercase}
+h2{font-size:31px;line-height:1.08;margin:8px 0 10px;color:var(--navy)}
+.ctx{color:#455661;line-height:1.62;font-size:16px}
+.profile{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.chip,.answer{border:1px solid var(--line);background:#fffdf8;color:var(--ink);border-radius:15px;padding:14px;text-align:left;cursor:pointer;font-size:15px;line-height:1.42;transition:.16s}
+.chip:hover,.chip.sel,.answer:hover,.answer.sel{border-color:#b38a4c;background:#fff4dd;box-shadow:inset 0 0 0 1px rgba(169,120,50,.14)}
+.chip b{display:block;color:var(--navy);margin-bottom:3px}
+.q{font-weight:900;color:var(--navy);margin:18px 0 11px}
+.answers{display:grid;gap:10px}.answer b{color:var(--gold);margin-right:7px}
+.nav{display:flex;gap:10px;margin-top:20px}.btn{border:0;border-radius:13px;padding:14px 16px;font-weight:900;cursor:pointer;font:inherit}
+.pri{flex:1;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.sec{background:#f2ece2;color:var(--navy);border:1px solid var(--line)}.disabled{opacity:.38;pointer-events:none}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.anchorGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.anchor{background:#fff8eb;border:1px solid #dfd2bd;border-radius:15px;padding:14px}.anchor b{color:var(--navy);display:block;margin-bottom:5px}
+.resultHero{border:1px solid #cfb17a;border-radius:20px;padding:20px;background:linear-gradient(145deg,#fff9ec,#f7ead0)}
+.resultHero .big{color:var(--gold);font-weight:900;font-size:17px}.resultHero h3{font-size:29px;margin:5px 0 8px;color:var(--navy)}
+.map{display:grid;gap:9px;margin:18px 0}.metric{background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:12px}.mt{display:flex;justify-content:space-between;font-weight:800;font-size:13px}.track{height:8px;background:#e5ddd2;border-radius:999px;margin-top:8px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--navy2),var(--gold2));border-radius:999px}
+.call{border-left:4px solid var(--gold);padding:13px 14px;background:#fbf3e5;border-radius:0 13px 13px 0;color:#4b5961;line-height:1.55}
+.rev{border:1px solid var(--line);border-radius:17px;overflow:hidden;margin:13px 0;background:#fffdf9}.rh{padding:15px 16px;background:#f2eadf;color:var(--navy);font-weight:900}.rb{padding:16px;line-height:1.58;color:#4b5961}.your{color:var(--gold);font-weight:900}
+.feedback{margin:11px 0;padding:12px 13px;border-radius:12px;background:#f7f2e9;border:1px solid #e3d9c9}.feedback b{color:var(--navy)}
+.bib{margin-top:11px;padding:13px;border-radius:12px;background:#eef3f5;border:1px solid #d3dfe3}.bib b{color:var(--navy)}
+.idb{margin-top:11px;padding:13px;border-radius:12px;background:#fbf0d8;border:1px solid #e5cf9f}.idb b{color:#7a5522}
+.decision{margin-top:22px;border:1px solid #c7a76b;border-radius:18px;padding:18px;background:#fff9ed}.decision input{width:100%;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:13px;margin-top:7px;font:inherit}
+.sources{margin-top:18px;font-size:12px;line-height:1.5;color:#74818a}
+footer{text-align:center;margin-top:24px;color:#788690;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+@media(max-width:600px){.card{padding:17px}.profile,.anchorGrid{grid-template-columns:1fr}h2{font-size:27px}}
+</style>
+</head>
+<body>
+<main class="app">
+<div class="brand"><div class="crest">✦</div><span>Homens de Verdade · Aula 3</span></div>
+
+<section class="hero">
+ <div class="ey">12 situações reais · resposta bíblica só no final</div>
+ <h1>Sala de Pressão</h1>
+ <p class="lead">Não queremos descobrir quem conhece a resposta “certa”. Queremos perceber <strong>o que governa nossas escolhas quando obedecer começa a custar.</strong></p>
+ <div class="lock"><span>🔒</span><span><b>Privado.</b> O teste não envia nem salva suas escolhas. No final, você recebe uma leitura mais profunda: o que sua resposta protege, o risco daquela lógica e o princípio bíblico envolvido.</span></div>
+</section>
+
+<section class="card">
+<div id="progress" class="progress"></div>
+
+<div id="intro" class="step active">
+ <div class="num">Antes de começar</div>
+ <h2>Qual é sua realidade hoje?</h2>
+ <p class="ctx">Isso não muda sua “nota”. Apenas adapta algumas situações para não tratar todo homem como se já fosse casado.</p>
+ <div class="profile" id="profile">
+  <button class="chip" data-v="single"><b>Solteiro</b>Sem relacionamento sério no momento.</button>
+  <button class="chip" data-v="dating"><b>Namorando / noivo</b>Construindo um relacionamento com intenção.</button>
+  <button class="chip" data-v="married"><b>Casado</b>Vivendo as responsabilidades da aliança conjugal.</button>
+  <button class="chip" data-v="other"><b>Outra realidade</b>Vou responder pelas situações que mais se aproximam da minha vida.</button>
+ </div>
+ <div class="anchorGrid">
+  <div class="anchor"><b>VERDADE</b>A Palavra não é ornamento da decisão; ela confronta nossa justificativa.</div>
+  <div class="anchor"><b>SANTIDADE</b>Não é aparência religiosa. É uma vida separada para Deus também no secreto.</div>
+  <div class="anchor"><b>UNIDADE</b>Convicção não precisa de arrogância. O homem de Deus aprende a ser firme e tratável.</div>
+  <div class="anchor"><b>ESPÍRITO</b>Autodomínio cristão não é mera força de vontade; é vida submetida e fortalecida pelo Espírito.</div>
+ </div>
+ <p class="ctx">Esses eixos conversam diretamente com a identidade da Igreja de Deus no Brasil: Escrituras, santidade, vida no Espírito, verdade e unidade.</p>
+ <div class="nav"><button id="startBtn" class="btn pri disabled" onclick="start()">Entrar na Sala de Pressão</button></div>
+</div>
+
+<div id="quiz" class="step">
+ <div class="num" id="qNum"></div>
+ <h2 id="qTitle"></h2>
+ <p class="ctx" id="qContext"></p>
+ <div class="q">O que você faria?</div>
+ <div class="answers" id="answers"></div>
+ <div class="nav"><button class="btn sec" onclick="back()">Voltar</button><button id="nextBtn" class="btn pri disabled" onclick="advance()">Continuar</button></div>
+ <div class="note">Não tente adivinhar o gabarito. Algumas alternativas são parcialmente corretas, mas revelam motivações diferentes.</div>
+</div>
+
+<div id="result" class="step">
+ <div class="num">Seu resultado</div>
+ <h2>Mapa de Pressão</h2>
+ <div class="resultHero">
+  <div class="big" id="score"></div>
+  <h3 id="topTitle"></h3>
+  <p class="ctx" id="topText"></p>
+ </div>
+ <div id="map" class="map"></div>
+ <div class="call"><b>Não transforme o resultado em rótulo.</b> O teste não diagnostica seu coração. Ele apenas mostra padrões nas situações apresentadas. Leve o que fizer sentido para oração, conversa e decisão.</div>
+
+ <h2 style="margin-top:28px">Agora, à luz da Bíblia</h2>
+ <p class="ctx">A parte mais importante começa aqui. Você verá não apenas a alternativa mais madura, mas também <strong>o que havia de verdadeiro e de perigoso na lógica da sua escolha.</strong></p>
+ <div id="reviews"></div>
+
+ <div class="decision">
+  <div class="num">Decisão final</div>
+  <h3 style="font-size:25px;margin:6px 0 8px">Decida antes da próxima pressão.</h3>
+  <label>Diante de Deus, decido que não negociarei…</label>
+  <input id="nonneg" placeholder="Ex.: minha integridade, pureza, verdade, presença">
+  <label style="display:block;margin-top:12px">…para obter…</label>
+  <input id="obtain" placeholder="Ex.: aprovação, dinheiro, prazer, controle, reconhecimento">
+  <div class="nav"><button class="btn pri" onclick="copyCommitment()">Copiar compromisso</button><button class="btn sec" onclick="restart()">Refazer</button></div>
+ </div>
+
+ <div class="sources">
+  <b>Base denominacional usada nesta atividade:</b> a Igreja de Deus no Brasil declara a Bíblia como fundamento de fé, a santidade como modelo de vida, uma identidade pentecostal guiada pelo Espírito e, em sua Convenção, os valores Verdade, Santidade e Unidade. A missão oficial enfatiza comunicar o evangelho completo de Jesus Cristo no poder do Espírito e viver a Grande Comissão.
+ </div>
+</div>
+</section>
+<footer>Caráter hoje · legado sempre</footer>
+</main>
+
 <script>
-const Q=[
-["O relatório","Seu chefe pede que você apresente alguns números de forma mais favorável. Tecnicamente existe espaço para justificar. Uma promoção pode depender disso.",["Faço. Não considero mentira e preciso pensar na minha família.","Faço só a parte que consigo defender tecnicamente.","Recuso imediatamente e deixo claro que isso é errado.","Explico meu limite, proponho uma alternativa verdadeira e aceito o custo se não houver caminho limpo."],3,"seguranca","Integridade + sabedoria","Daniel 1:8; Provérbios 11:3; Efésios 4:25","Fidelidade não exige agressividade, mas também não permite maquiar a verdade para proteger resultado."],
-["O dinheiro que ninguém percebeu","Você recebe um valor maior do que deveria. Ninguém entra em contato. Você está apertado financeiramente.",["Fico com o valor até alguém pedir de volta.","Uso agora e, se cobrarem, devolvo depois.","Confirmo a origem antes de usar e devolvo se não for meu.","Dou uma parte e fico com o restante, porque a necessidade é real."],2,"dinheiro","Verdade antes da conveniência","Lucas 16:10; Provérbios 10:9","Necessidade legítima não transforma o que não é nosso em provisão."],
-["A oportunidade que tira você de casa","Uma proposta quase dobra sua renda, mas por dois anos você mal estará em casa.",["Aceito imediatamente. Prover é minha responsabilidade.","Recuso imediatamente. Família sempre vem antes de carreira.","Avalio temporada, necessidade real e impacto na família; converso antes de decidir.","Aceito e depois compenso com presentes e viagens."],2,"status","Provisão não é só renda","1 Timóteo 5:8; Efésios 5:25; Provérbios 15:22","A Bíblia valoriza provisão e cuidado. Maturidade não usa uma palavra boa para encerrar todo discernimento."],
-["A colega que admira você","Seu casamento está frio. Uma colega elogia você, manda mensagens fora do expediente e você percebe que espera por elas. Nada físico aconteceu.",["Continuo. Não existe pecado enquanto nada físico acontecer.","Diminuo as mensagens, mas escondo para evitar confusão.","Reconheço a inclinação, estabeleço limites e trato o que está acontecendo no casamento.","Corto a colega de forma dura para provar fidelidade."],2,"desejo","Guardar o coração antes do ato","Provérbios 4:23; Mateus 5:28; 1 Coríntios 6:12","Fidelidade não começa apenas na ausência do ato sexual. Jesus leva o discipulado para o coração."],
-["A oportunidade na igreja","Você serve há anos. Outra pessoa recebe a liderança que você esperava.",["Saio. Se não reconhecem meu valor, não precisam do meu serviço.","Continuo, mas me fecho emocionalmente.","Reconheço a frustração, trato o coração e continuo sem fazer do reconhecimento uma condição.","Finjo que não me importo porque cristão maduro não fica triste."],2,"reconhecimento","Fidelidade sem aplauso","Colossenses 3:23; Filipenses 2:3-4","Tristeza é humana. A questão é se reconhecimento virou condição para fidelidade."],
-["Todo mundo faz","Seu grupo normalizou algo que você considera errado. Discordar pode deixar você de fora.",["Faço junto para não parecer radical.","Fico presente, mas não participo, sem atacar ninguém.","Confronto todos publicamente para mostrar firmeza.","Evito pensar e sigo o fluxo."],1,"aprovacao","Firmeza sem arrogância","Romanos 12:2; 1 Pedro 3:15-16","Convicção não precisa de grosseria. É possível não se conformar e ainda agir com respeito."],
-["O erro que ninguém viu","Você comete um erro sério no trabalho. Talvez ninguém descubra, e admitir pode custar sua imagem.",["Espero para ver se aparece.","Corrijo silenciosamente e não conto.","Assumo com quem precisa saber e participo da correção.","Procuro alguém para dividir a culpa."],2,"imagem","Verdade acima da autoproteção","Provérbios 28:13; Efésios 4:25","Confessar não é expor-se a todos; é assumir responsabilidade diante de quem precisa saber."],
-["A correção","Sua esposa, líder ou chefe aponta uma falha. Você discorda da forma e sente vontade de se defender.",["Interrompo e explico por que a pessoa está errada.","Fico calado, mas por dentro ignoro tudo.","Escuto, separo forma de conteúdo, examino o que é verdadeiro e respondo depois.","Aceito tudo sem avaliar, porque humildade é não se defender."],2,"controle","Mansidão + discernimento","Tiago 1:19; Provérbios 12:15","Mansidão não é passividade. O homem maduro consegue ouvir sem entregar a consciência nem proteger a imagem a qualquer custo."],
-["O prazer rápido","Você está exausto, sozinho e desgastado. Existe uma forma rápida de aliviar a tensão fazendo algo que sabe que não deve alimentar.",["Faço porque preciso aliviar a cabeça.","Faço só um pouco para não perder o controle.","Reconheço o desejo, mudo o ambiente e procuro uma resposta coerente com minha convicção.","Finjo que não sinto nada e tento vencer só pela força de vontade."],2,"conforto","Desejo real sem ser soberano","1 Coríntios 6:12; Gálatas 5:16; Lucas 9:23","O problema não é sentir desejo; é entregar a ele autoridade final."],
-["Quando o sucesso pede silêncio","Surge a oportunidade que você desejava. Para mantê-la, parece necessário esconder ou relativizar convicções importantes.",["Aceito. Depois volto a falar quando estiver mais forte.","Recuso qualquer ambiente que não concorde comigo.","Discerno adaptação legítima versus deslealdade e permaneço sem entregar o centro.","Fico e começo a agir como o ambiente para não perder influência."],2,"status","Adaptação sem assimilação","Daniel 1; Romanos 12:2","Daniel aprendeu, serviu e trabalhou dentro do sistema sem entregar o centro."],
-["Quando você perde o controle","Algo importante sai do seu planejamento. Manipular pessoas ou informações aumentaria a chance do resultado desejado.",["Pressiono. Liderança exige fazer acontecer.","Não faço nada. Se Deus quiser, resolve.","Faço tudo que é legítimo, sem manipular, e aceito que o resultado final não está sob meu controle.","Mudo a verdade porque o fim é bom."],2,"controle","Responsabilidade sem senhorio","Provérbios 16:9; Tiago 4:13-15","O discípulo planeja e age, mas não precisa corromper meios para garantir resultados."],
-["Getsêmani","Você sabe o que precisa fazer, mas sinceramente não quer. A decisão correta custa emocionalmente e talvez não traga recompensa imediata.",["Espero até sentir vontade.","Faço, mas nego que estou sofrendo.","Reconheço diante de Deus o que desejo, submeto minha vontade e obedeço.","Se dói, provavelmente não é vontade de Deus."],2,"conforto","Desejo submetido ao Pai","Lucas 22:42","Jesus não finge que não existe vontade, angústia ou custo. Desejo real pode existir sem ser soberano."]
-];
-const L={seguranca:"Segurança",dinheiro:"Dinheiro",status:"Status / oportunidade",desejo:"Desejo",reconhecimento:"Reconhecimento",aprovacao:"Aprovação",imagem:"Imagem",controle:"Controle",conforto:"Conforto"};
-let i=-1,A=Array(Q.length).fill(null);
-const intro=document.getElementById("intro"),quiz=document.getElementById("quiz"),result=document.getElementById("result");
-function show(el){[intro,quiz,result].forEach(x=>x.classList.remove("active"));el.classList.add("active");document.querySelector(".card").scrollIntoView({behavior:"smooth",block:"start"})}
-function bars(){let p=document.getElementById("prog");p.innerHTML="";let total=Q.length+2,pos=i<0?0:(i<Q.length?i+1:total-1);for(let n=0;n<total;n++){let b=document.createElement("div");b.className="bar"+(n<=pos?" on":"");p.appendChild(b)}}
-function start(){i=0;render()}function render(){show(quiz);bars();let q=Q[i];qn.textContent=(i+1)+" de "+Q.length;qt.textContent=q[0];qc.textContent=q[1];answers.innerHTML="";q[2].forEach((t,n)=>{let b=document.createElement("button");b.className="a"+(A[i]===n?" sel":"");b.innerHTML="<b>"+String.fromCharCode(65+n)+")</b>"+t;b.onclick=()=>{A[i]=n;render()};answers.appendChild(b)});next.classList.toggle("disabled",A[i]===null)}
-function back(){if(i===0){i=-1;show(intro);bars()}else{i--;render()}}function advance(){if(A[i]===null)return;if(i<Q.length-1){i++;render()}else results()}
-function results(){i=Q.length;show(result);bars();let ok=0,c={};Q.forEach((q,n)=>{if(A[n]===q[3])ok++;else c[q[4]]=(c[q[4]]||0)+1});let s=Object.entries(c).sort((a,b)=>b[1]-a[1]),top=s[0];score.textContent=ok+" de "+Q.length+" decisões alinhadas ao princípio central";topTitle.textContent=top?"Maior pressão percebida: "+L[top[0]]:"Boa consistência nas situações";topText.textContent=top?"Nas situações deste teste, "+L[top[0]].toLowerCase()+" apareceu com mais frequência nas escolhas que se afastaram do princípio central. Isso não define você; mostra um ponto para oração e vigilância.":"Suas escolhas foram consistentes com os princípios apresentados. Continue decidindo antes da pressão.";map.innerHTML="";Object.keys(L).forEach(k=>{let v=c[k]||0,m=Math.max(1,...Object.values(c));map.innerHTML+='<div class="metric"><div class="mt"><span>'+L[k]+'</span><span>'+v+'</span></div><div class="track"><div class="fill" style="width:'+((v/m)*100)+'%"></div></div></div>'});reviews.innerHTML="";Q.forEach((q,n)=>{let chosen=q[2][A[n]],best=q[2][q[3]];reviews.innerHTML+='<div class="rev"><div class="rh">'+(n+1)+'. '+q[0]+'</div><div class="rb"><div class="your">Sua escolha: '+String.fromCharCode(65+A[n])+') '+chosen+'</div><p><b>Princípio:</b> '+q[5]+'</p><p>'+q[7]+'</p><div class="bib"><b>À luz da Bíblia:</b> '+q[6]+'<br><br><b>Resposta mais madura neste cenário:</b> '+String.fromCharCode(65+q[3])+') '+best+'</div></div></div>'})}
-function copyC(){let a=x.value.trim()||"________",b=y.value.trim()||"________",t="Diante de Deus, decido que não negociarei "+a+" para obter "+b+".";navigator.clipboard?.writeText(t).then(()=>alert("Compromisso copiado.")).catch(()=>prompt("Copie:",t))}
-function restart(){A=Array(Q.length).fill(null);i=-1;show(intro);bars();scrollTo({top:0,behavior:"smooth"})}bars();
-</script></body></html>
+var profileValue='';
+var index=-1;
+var chosen=[];
+var pressureLabels={
+ integrity:'Integridade / verdade',money:'Dinheiro / segurança',approval:'Aprovação',
+ desire:'Desejo / pureza',recognition:'Reconhecimento',image:'Imagem / reputação',
+ control:'Controle',comfort:'Conforto',belonging:'Pertencimento'
+};
+
+document.querySelectorAll('#profile .chip').forEach(function(b){
+ b.onclick=function(){
+  document.querySelectorAll('#profile .chip').forEach(function(x){x.classList.remove('sel')});
+  b.classList.add('sel'); profileValue=b.getAttribute('data-v');
+  document.getElementById('startBtn').classList.remove('disabled');
+ }
+});
+
+function relationScenario(){
+ if(profileValue==='married'){
+  return {
+   title:'A atenção que começou a fazer bem demais',
+   context:'Seu casamento atravessa uma fase fria. Uma colega começa a admirar você, manda mensagens fora do expediente e você percebe que espera por elas. Nada físico aconteceu.',
+   answers:[
+    {t:'Continuo. Se nada físico aconteceu, ainda não ultrapassei a linha.',p:'desire',f:'Você protege a sensação de ser desejado. O problema é reduzir fidelidade ao ato consumado e ignorar o caminho do coração.'},
+    {t:'Diminuo as mensagens, mas escondo isso em casa para evitar confusão.',p:'image',f:'Há percepção do risco, mas o segredo continua protegendo sua imagem. Limite sem verdade pode só empurrar o problema para frente.'},
+    {t:'Reconheço o que essa atenção despertou em mim, estabeleço limites claros e trato com responsabilidade o que está acontecendo no meu casamento.',p:'integrity',f:'Essa escolha encara o desejo, protege a aliança e evita culpar a outra pessoa ou o casamento pela sua responsabilidade.'},
+    {t:'Corto a pessoa de forma agressiva e conto para todos para mostrar que sou fiel.',p:'image',f:'Pode parecer zelo, mas transforma santidade em performance. Limites podem ser firmes sem humilhar ninguém.'}
+   ],
+   best:2,principle:'Fidelidade começa no coração, não apenas no ato.',bible:'Provérbios 4:23; Mateus 5:27-28; 1 Coríntios 6:12',
+   deep:'Jesus não nos chama apenas a evitar o ponto final do pecado; chama a guardar o coração e interromper caminhos que começam a ganhar governo sobre nós.',
+   idb:'Santidade, na tradição da Igreja de Deus, é modelo de vida. Isso inclui o secreto, as intenções e a forma como tratamos pessoas.'
+  };
+ }
+ return {
+  title:'O relacionamento que pede uma concessão',
+  context: profileValue==='dating'
+   ? 'Você gosta muito da pessoa com quem está se relacionando. Ela começa a pressionar limites físicos e espirituais que vocês haviam combinado. Você teme perder o relacionamento se insistir neles.'
+   : 'Você conhece alguém de quem gosta muito. À medida que a relação se aproxima, percebe pressão para flexibilizar limites de pureza, fé e propósito para não perder a pessoa.',
+  answers:[
+   {t:'Flexibilizo. Se existe amor, não quero transformar regras em motivo para perder a pessoa.',p:'desire',f:'Você protege o vínculo, mas corre o risco de chamar medo de perder de “amor”. Amor bíblico não precisa destruir convicções para sobreviver.'},
+   {t:'Mantenho o limite, mas sem explicar meu coração; a pessoa precisa simplesmente aceitar.',p:'control',f:'Há firmeza, mas pouca unidade. Convicção sem diálogo pode se tornar controle ou superioridade.'},
+   {t:'Converso com clareza sobre limites e propósito, aceito o risco de perder a relação e procuro viver pureza com graça, prestação de contas e ajuda do Espírito.',p:'integrity',f:'Aqui o relacionamento deixa de ser senhor. Você une verdade, santidade e respeito à liberdade do outro.'},
+   {t:'Termino imediatamente qualquer relacionamento em que exista tentação.',p:'comfort',f:'Fugir de ocasião de pecado pode ser sábio, mas tratar toda tensão como sinal automático para romper impede discernimento, conversa e crescimento.'}
+  ],
+  best:2,principle:'Nenhum relacionamento deve ocupar o lugar de senhor.',bible:'1 Tessalonicenses 4:3-5; 2 Timóteo 2:22; 1 Coríntios 6:12',
+  deep:'Pureza cristã não é repressão nem medo do corpo. É aprender a amar sem usar o outro e sem entregar ao desejo uma autoridade que pertence a Cristo.',
+  idb:'A ênfase da Igreja de Deus em santidade e vida no Espírito aponta para uma pureza vivida, não apenas para aparência ou regra externa.'
+ };
+}
+
+function vocationScenario(){
+ if(profileValue==='married'){
+  return {
+   title:'A oportunidade que quase tira você de casa',
+   context:'Uma proposta praticamente dobra sua renda, mas durante dois anos você estará quase sempre ausente. Sua família precisa de recursos, mas também precisa de presença.',
+   answers:[
+    {t:'Aceito imediatamente. Prover financeiramente é minha principal responsabilidade.',p:'money',f:'Provisão é bíblica, mas reduzi-la a dinheiro pode transformar uma responsabilidade real em justificativa para abandonar outras.'},
+    {t:'Recuso imediatamente. Família sempre vem antes de carreira.',p:'comfort',f:'Pode haver sabedoria em recusar, mas um slogan também pode impedir discernimento sobre temporada, necessidade e missão.'},
+    {t:'Examino necessidade real, duração, impacto sobre esposa e filhos, alternativas e conselho; decido em unidade, não sozinho.',p:'integrity',f:'Essa resposta não promete uma única decisão para todos os casos; ela honra responsabilidade, aliança, conselho e discernimento.'},
+    {t:'Aceito e depois compenso a ausência com presentes, viagens e qualidade de tempo.',p:'money',f:'Presentes podem expressar amor, mas não substituem presença, responsabilidade relacional e participação na vida da família.'}
+   ],
+   best:2,principle:'Provisão bíblica é responsabilidade integral, não apenas renda.',bible:'1 Timóteo 5:8; Efésios 5:25; Provérbios 15:22',
+   deep:'Nem toda promoção é vontade de Deus, e nem toda renúncia profissional é maturidade. O teste é: quem participa da decisão, quais responsabilidades estão em jogo e que preço está sendo normalizado?',
+   idb:'A igreja local ensina o casamento como compromisso de fidelidade e cuidado orientado a Cristo. A decisão profissional precisa conversar com essa aliança, não atropelá-la.'
+  };
+ }
+ return {
+  title:'A oportunidade que promete futuro',
+  context:'Surge uma oportunidade excelente de carreira: mais dinheiro, visibilidade e portas abertas. Mas ela exigirá uma rotina que provavelmente eliminará comunhão, serviço, descanso e qualquer espaço de formação espiritual por um longo período.',
+  answers:[
+   {t:'Aceito. Sou solteiro; esta é a fase de acelerar e construir patrimônio.',p:'status',f:'Ser solteiro dá liberdade real, mas liberdade não significa ausência de senhorio, limites ou comunidade.'},
+   {t:'Recuso qualquer trabalho que atrapalhe minha rotina atual de igreja.',p:'comfort',f:'A comunhão é essencial, mas vocação e missão também podem exigir mudanças. Maturidade não transforma rotina em ídolo.'},
+   {t:'Avalio duração, propósito, impacto espiritual, saúde, responsabilidades e conselho; verifico se a oportunidade cabe na vida que Deus está formando em mim.',p:'integrity',f:'Essa escolha reconhece que solteiro também administra tempo, corpo, vocação, igreja, família e futuro diante de Deus.'},
+   {t:'Aceito agora e penso na vida espiritual depois, quando estiver estabilizado.',p:'status',f:'O “depois” costuma ser uma das formas mais convincentes de adiar aquilo que dizemos ser central.'}
+  ],
+  best:2,principle:'Solteiro não é homem em espera; já é mordomo de uma vida inteira.',bible:'1 Coríntios 7:32-35; Mateus 6:33; Provérbios 15:22',
+  deep:'A solteirice pode ser uma estação de grande disponibilidade para Deus, crescimento, serviço e construção. O objetivo não é impedir ambição, mas submeter ambição ao senhorio de Cristo.',
+  idb:'A Grande Comissão e o discipulado pertencem a todo crente, casado ou solteiro. Vocação profissional não precisa competir com a missão; deve ser integrada a ela.'
+ };
+}
+
+function buildQuestions(){
+ return [
+ {title:'O relatório',context:'Seu chefe pede que você apresente alguns números de forma mais favorável. Tecnicamente existe espaço para justificar. Uma promoção importante pode depender disso.',
+  answers:[
+   {t:'Faço. Não considero mentira e preciso pensar nas minhas responsabilidades.',p:'money',f:'Você reconhece responsabilidades reais, mas usa uma necessidade legítima para aliviar o peso da verdade.'},
+   {t:'Faço só a parte que consigo defender tecnicamente.',p:'integrity',f:'Sua consciência está ativa, mas ainda existe o risco de usar tecnicidade para chamar concessão de prudência.'},
+   {t:'Recuso imediatamente e deixo claro que isso é errado.',p:'image',f:'Há coragem, mas a verdade pode ser defendida de um jeito que produza desnecessariamente confronto, orgulho ou humilhação.'},
+   {t:'Explico meu limite, proponho uma alternativa verdadeira e aceito o custo se não houver caminho limpo.',p:'integrity',f:'Aqui aparecem firmeza, respeito, criatividade e disposição para pagar o preço da verdade.'}],
+  best:3,principle:'Verdade com firmeza e sabedoria.',bible:'Daniel 1:8-14; Provérbios 11:3; Efésios 4:25',
+  deep:'Daniel não se contaminou, mas também não transformou convicção em grosseria. Ele decidiu, conversou e buscou uma forma sábia de permanecer fiel.',
+  idb:'Verdade é um dos valores assumidos pela Convenção da Igreja de Deus. Santidade não é só o que evitamos; aparece na forma como trabalhamos e falamos.'},
+
+ {title:'O dinheiro que ninguém percebeu',context:'Você recebe um valor maior do que deveria. Ninguém entra em contato. Você está financeiramente apertado.',
+  answers:[
+   {t:'Fico com o valor até alguém pedir de volta.',p:'money',f:'A passividade parece inocente, mas transfere para o outro a responsabilidade de corrigir algo que você já percebeu.'},
+   {t:'Uso agora e, se cobrarem, devolvo depois.',p:'money',f:'A necessidade começa a governar o significado da honestidade. “Depois eu conserto” é exatamente o tipo de frase que normaliza concessões.'},
+   {t:'Confirmo a origem antes de usar e devolvo se não for meu.',p:'integrity',f:'Essa escolha trata integridade como decisão anterior à fiscalização.'},
+   {t:'Fico com parte porque minha necessidade é real e uso parte para uma boa causa.',p:'money',f:'Uma finalidade boa não muda a natureza do que não nos pertence.'}],
+  best:2,principle:'Fidelidade no pouco e honestidade sem fiscalização.',bible:'Lucas 16:10; Provérbios 10:9; Efésios 4:28',
+  deep:'A pergunta não é apenas “posso escapar?”. É “quem eu estou me tornando quando ninguém está olhando?”.',
+  idb:'Santidade como modelo de vida alcança o bolso. Vida no Espírito não separa culto, finanças e caráter.'},
+
+ relationScenario(),
+ vocationScenario(),
+
+ {title:'Quando outro homem recebe a oportunidade',context:'Você serve com dedicação e esperava ser escolhido para uma responsabilidade na igreja. Outra pessoa é chamada.',
+  answers:[
+   {t:'Diminuo meu serviço. Se não reconhecem meu valor, também não precisam de mim.',p:'recognition',f:'A dor é compreensível, mas o serviço começa a funcionar como negociação por reconhecimento.'},
+   {t:'Continuo servindo, mas alimento comparação e distância.',p:'recognition',f:'A atividade continua; o coração, porém, começa a se retirar. Ressentimento silencioso também forma caráter.'},
+   {t:'Reconheço a frustração, converso se necessário, trato comparação e continuo servindo sem fazer do cargo a condição da minha fidelidade.',p:'integrity',f:'Maturidade não exige fingir que não doeu; exige não entregar à dor o governo da resposta.'},
+   {t:'Finjo que não me importo, porque homem espiritual não deveria sentir isso.',p:'image',f:'Negar a emoção não é o mesmo que submetê-la. O que é escondido pode continuar governando.'}],
+  best:2,principle:'Serviço nasce de identidade, não de posição.',bible:'Colossenses 3:23-24; Filipenses 2:3-5; Marcos 10:43-45',
+  deep:'O teste não é se você deseja crescer ou liderar. É se o chamado continua valendo quando o aplauso vai para outro homem.',
+  idb:'Unidade não é ausência de frustração; é aprender a tratar ambição e comparação sem ferir o corpo de Cristo.'},
+
+ {title:'Todo mundo faz',context:'Seu grupo de amigos normalizou algo que você considera errado. Discordar pode mudar seu lugar no grupo.',
+  answers:[
+   {t:'Faço junto para não parecer radical.',p:'belonging',f:'Pertencimento começa a definir convicção. O ambiente passa a dizer quem você precisa ser para continuar dentro.'},
+   {t:'Permaneço presente, mas não participo; se perguntarem, explico com respeito.',p:'integrity',f:'Você preserva relação sem entregar convicção. Nem toda fidelidade exige romper vínculos; às vezes exige permanecer diferente.'},
+   {t:'Confronto todos de forma dura para deixar claro de que lado estou.',p:'image',f:'Pode existir verdade na posição e pecado na postura. Convicção não autoriza desprezo.'},
+   {t:'Evito pensar sobre isso e sigo o fluxo.',p:'belonging',f:'Não decidir também decide: a pressão do grupo assume o lugar do discernimento.'}],
+  best:1,principle:'Não conformidade com mansidão.',bible:'Romanos 12:2; 1 Pedro 3:15-16; 1 Coríntios 15:33',
+  deep:'O homem bíblico não precisa ser cópia do ambiente nem inimigo de quem pensa diferente. Ele sabe a quem pertence e, por isso, pode permanecer respeitoso.',
+  idb:'Verdade e Unidade precisam andar juntas. Verdade sem amor vira arma; unidade sem verdade vira conformidade.'},
+
+ {title:'O erro que ninguém viu',context:'Você comete um erro sério. Há chance real de que ninguém descubra, e assumir pode custar sua imagem.',
+  answers:[
+   {t:'Espero. Se ninguém perceber, não faz sentido criar um problema.',p:'image',f:'A imagem passa a decidir quando a verdade deve aparecer.'},
+   {t:'Corrijo silenciosamente e sigo em frente.',p:'image',f:'Corrigir é melhor que ignorar, mas ainda pode faltar responsabilidade diante de quem foi afetado.'},
+   {t:'Assumo com quem precisa saber, participo da correção e aprendo com o erro.',p:'integrity',f:'Verdade e responsabilidade custam imagem no curto prazo, mas protegem caráter e confiança no longo prazo.'},
+   {t:'Procuro uma explicação que distribua a culpa.',p:'control',f:'Dividir contexto pode ser justo; diluir responsabilidade para preservar reputação é outra coisa.'}],
+  best:2,principle:'Confissão responsável em vez de autoproteção.',bible:'Provérbios 28:13; Tiago 5:16; Efésios 4:25',
+  deep:'Confessar não significa exposição indiscriminada. Significa parar de usar segredo para proteger uma versão de si mesmo.',
+  idb:'Santidade não exige perfeição performática; exige uma vida que se deixa corrigir pela Palavra e pelo Espírito.'},
+
+ {title:'Quando alguém corrige você',context:'Sua esposa, um amigo, líder ou chefe aponta uma falha. A forma foi ruim e você discorda de parte do conteúdo.',
+  answers:[
+   {t:'Respondo na hora e mostro onde a pessoa também está errada.',p:'image',f:'Pode haver injustiça real, mas a urgência em devolver a acusação costuma proteger a imagem antes de examinar a verdade.'},
+   {t:'Fico calado, mas descarto tudo por causa da forma.',p:'control',f:'Silêncio externo não garante humildade. A forma ruim pode virar desculpa para evitar o conteúdo.'},
+   {t:'Escuto, separo forma de conteúdo, examino diante de Deus e depois respondo com clareza.',p:'integrity',f:'Essa escolha une mansidão, discernimento e limites. Você não precisa aceitar tudo para aprender alguma coisa.'},
+   {t:'Aceito tudo sem avaliar, porque humildade é nunca se defender.',p:'approval',f:'Humildade não é apagar discernimento nem permitir abuso. Cristo não nos chama à passividade sem verdade.'}],
+  best:2,principle:'Ser ensinável sem abandonar discernimento.',bible:'Tiago 1:19-20; Provérbios 12:15; 15:31-32',
+  deep:'O ego pergunta “como eu me defendo?”. A sabedoria pergunta primeiro “há alguma verdade aqui que eu preciso receber?”.',
+  idb:'Unidade cristã não é silêncio forçado. Ela exige verdade, humildade, correção e reconciliação.'},
+
+ {title:'O secreto digital',context:'Você está cansado, sozinho e emocionalmente vulnerável. No celular, existe acesso imediato a conteúdo ou conversa que alimenta desejo e que você sabe que deveria evitar.',
+  answers:[
+   {t:'Eu cedo. Preciso aliviar a tensão; depois oro e recomeço.',p:'comfort',f:'A graça de Deus é real, mas usá-la previamente como justificativa transforma arrependimento em licença.'},
+   {t:'Vou até perto do limite, mas paro antes de algo “grave”.',p:'desire',f:'A pergunta vira “até onde posso ir?” em vez de “o que está me dominando?”.'},
+   {t:'Reconheço minha vulnerabilidade, saio do ambiente, uso limites práticos, oro e procuro ajuda quando necessário.',p:'integrity',f:'Aqui santidade envolve corpo, ambiente, comunidade, decisão e dependência do Espírito — não apenas força mental.'},
+   {t:'Finjo que não sinto desejo e tento vencer sozinho.',p:'image',f:'Negar a realidade pode aumentar vergonha e isolamento. Confissão e limites são mais fortes que performance.'}],
+  best:2,principle:'Santidade prática e liberdade do domínio dos apetites.',bible:'1 Coríntios 6:12; 2 Timóteo 2:22; Gálatas 5:16,22-25',
+  deep:'O alvo não é virar um homem que “não sente”. É tornar-se um homem em quem desejo deixou de ocupar o trono.',
+  idb:'A tradição pentecostal da Igreja de Deus fala de santificação pela Palavra e pelo Espírito. Autodomínio é fruto do Espírito, mas também pede decisões concretas.'},
+
+ {title:'Quando o sucesso pede silêncio',context:'Você recebe a oportunidade que desejava. Para continuar crescendo, percebe que será tentado a esconder ou relativizar convicções importantes.',
+  answers:[
+   {t:'Aceito tudo agora. Quando tiver mais influência, volto a ser firme.',p:'status',f:'O “depois” pode ser uma forma sofisticada de vender hoje aquilo que você diz querer usar amanhã.'},
+   {t:'Recuso qualquer ambiente que não compartilhe da minha fé.',p:'comfort',f:'Protege você da tensão, mas pode confundir santidade com isolamento e enfraquecer presença missionária.'},
+   {t:'Distingo adaptação legítima de deslealdade; permaneço e sirvo onde posso aprender sem entregar o centro.',p:'integrity',f:'Daniel é um bom exemplo: aprendeu a língua e serviu no sistema, mas decidiu onde não negociaria.'},
+   {t:'Adoto a linguagem e os valores do ambiente para preservar influência.',p:'approval',f:'Influência comprada pela perda da própria convicção se torna assimilação, não missão.'}],
+  best:2,principle:'Presença sem assimilação.',bible:'Daniel 1; Romanos 12:2; Mateus 5:13-16',
+  deep:'A pergunta não é “posso estar neste ambiente?”. É “posso estar aqui sem permitir que este ambiente se torne meu senhor?”.',
+  idb:'A missão da Igreja de Deus enfatiza comunicar o evangelho completo e viver a Grande Comissão. Santidade não é fuga do mundo; é presença fiel nele.'},
+
+ {title:'Quando você perde o controle',context:'Uma situação importante sai completamente do seu planejamento. Manipular pessoas ou informações aumentaria muito a chance de conseguir o resultado que deseja.',
+  answers:[
+   {t:'Pressiono. Liderança exige fazer acontecer.',p:'control',f:'Responsabilidade vira domínio. Um resultado bom não santifica meios manipuladores.'},
+   {t:'Não faço nada. Se Deus quiser, Ele resolve.',p:'comfort',f:'Confiança em Deus não é passividade. Fé bíblica age sem tentar ocupar o lugar de Deus.'},
+   {t:'Faço tudo que é legítimo, comunico com verdade e aceito que o resultado final não está sob meu controle.',p:'integrity',f:'Aqui existe responsabilidade sem senhorio: você age com diligência, mas não precisa controlar pessoas para se sentir seguro.'},
+   {t:'Mudo alguns fatos porque o objetivo é bom e todos serão beneficiados.',p:'control',f:'O fim bom não purifica meio falso. A verdade continua sendo parte da obediência.'}],
+  best:2,principle:'Responsabilidade sem usurpar o lugar de Deus.',bible:'Provérbios 16:9; Tiago 4:13-15; Salmo 37:5',
+  deep:'Controle promete segurança, mas frequentemente revela medo. Fé madura não é ausência de planejamento; é planejamento sem idolatria do resultado.',
+  idb:'Vida guiada pelo Espírito significa agir e depender: nem manipulação, nem passividade espiritualizada.'},
+
+ {title:'Getsêmani',context:'Você sabe qual é a decisão fiel, mas sinceramente não quer tomá-la. Ela custa conforto, orgulho, desejo ou segurança e talvez não produza recompensa imediata.',
+  answers:[
+   {t:'Espero até sentir vontade. Obediência sem vontade seria falsa.',p:'comfort',f:'Sinceridade emocional importa, mas fazer da vontade momentânea a autoridade final entrega ao desejo o governo da vida.'},
+   {t:'Obedeço, mas finjo que não está doendo.',p:'image',f:'Obediência é valiosa, mas negar angústia pode transformar espiritualidade em performance.'},
+   {t:'Digo a verdade a Deus sobre o que eu quero, submeto minha vontade ao Pai e obedeço.',p:'integrity',f:'Essa é a lógica de Getsêmani: desejo real, dor real e submissão real.'},
+   {t:'Se está doendo tanto, provavelmente Deus não quer isso para mim.',p:'comfort',f:'Nem toda dor é vontade de Deus, mas sofrimento também não é prova automática de que estamos fora da vontade dEle.'}],
+  best:2,principle:'O desejo pode ser real sem ser soberano.',bible:'Lucas 22:39-46; Lucas 9:23',
+  deep:'Jesus não encena ausência de vontade. Ele ora a partir da angústia e, ainda assim, entrega ao Pai a palavra final. O discipulado cristão chega ao centro: quem governa?',
+  idb:'O evangelho completo não termina em autocontrole humano. Ele nos chama a uma vida santificada, dependente do Espírito e submetida a Cristo.'}
+ ];
+}
+
+var Q=[];
+var answersChosen=[];
+
+function setProgress(){
+ var p=document.getElementById('progress');p.innerHTML='';
+ var total=14;var pos=index<0?0:(index<Q.length?index+1:total-1);
+ for(var n=0;n<total;n++){var b=document.createElement('div');b.className='bar'+(n<=pos?' on':'');p.appendChild(b)}
+}
+function showOnly(el){
+ [document.getElementById('intro'),document.getElementById('quiz'),document.getElementById('result')].forEach(function(x){x.classList.remove('active')});
+ el.classList.add('active');document.querySelector('.card').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function start(){
+ Q=buildQuestions();answersChosen=Array(Q.length).fill(null);index=0;renderQuestion();
+}
+function renderQuestion(){
+ showOnly(document.getElementById('quiz'));setProgress();
+ var q=Q[index];document.getElementById('qNum').textContent=(index+1)+' de '+Q.length;
+ document.getElementById('qTitle').textContent=q.title;document.getElementById('qContext').textContent=q.context;
+ var box=document.getElementById('answers');box.innerHTML='';
+ q.answers.forEach(function(a,n){
+  var btn=document.createElement('button');btn.className='answer'+(answersChosen[index]===n?' sel':'');
+  btn.innerHTML='<b>'+String.fromCharCode(65+n)+')</b>'+a.t;
+  btn.onclick=function(){answersChosen[index]=n;renderQuestion()};box.appendChild(btn);
+ });
+ document.getElementById('nextBtn').classList.toggle('disabled',answersChosen[index]===null);
+}
+function back(){
+ if(index===0){index=-1;showOnly(document.getElementById('intro'));setProgress()}
+ else{index--;renderQuestion()}
+}
+function advance(){
+ if(answersChosen[index]===null)return;
+ if(index<Q.length-1){index++;renderQuestion()}else{showResults()}
+}
+function showResults(){
+ index=Q.length;showOnly(document.getElementById('result'));setProgress();
+ var aligned=0,press={};
+ Q.forEach(function(q,n){
+  if(answersChosen[n]===q.best)aligned++;
+  else{var p=q.answers[answersChosen[n]].p;press[p]=(press[p]||0)+1}
+ });
+ var sorted=Object.entries(press).sort(function(a,b){return b[1]-a[1]});
+ var top=sorted[0];
+ document.getElementById('score').textContent=aligned+' de '+Q.length+' decisões se aproximaram da resposta mais madura proposta';
+ document.getElementById('topTitle').textContent=top?'Pressão que mais apareceu: '+pressureLabels[top[0]]:'Boa consistência nas situações';
+ document.getElementById('topText').textContent=top
+  ?'Nas escolhas deste teste, '+pressureLabels[top[0]].toLowerCase()+' apareceu com maior frequência quando você se afastou do princípio central. Não é um diagnóstico; é uma pista para reflexão.'
+  :'Suas escolhas mostraram boa consistência com os princípios apresentados. O próximo passo é transformar convicção em prática antes da pressão.';
+ var map=document.getElementById('map');map.innerHTML='';
+ var max=1;Object.values(press).forEach(function(v){if(v>max)max=v});
+ Object.keys(pressureLabels).forEach(function(k){
+  var v=press[k]||0;var m=document.createElement('div');m.className='metric';
+  m.innerHTML='<div class="mt"><span>'+pressureLabels[k]+'</span><span>'+v+'</span></div><div class="track"><div class="fill" style="width:'+((v/max)*100)+'%"></div></div>';
+  map.appendChild(m);
+ });
+ var list=document.getElementById('reviews');list.innerHTML='';
+ Q.forEach(function(q,n){
+  var picked=q.answers[answersChosen[n]];var best=q.answers[q.best];
+  var item=document.createElement('div');item.className='rev';
+  item.innerHTML=
+   '<div class="rh">'+(n+1)+'. '+q.title+'</div>'+
+   '<div class="rb">'+
+   '<div class="your">Sua escolha: '+String.fromCharCode(65+answersChosen[n])+') '+picked.t+'</div>'+
+   '<div class="feedback"><b>O que essa escolha revela ou tenta proteger:</b><br>'+picked.f+'</div>'+
+   '<p><b>Princípio em disputa:</b> '+q.principle+'</p>'+
+   '<p>'+q.deep+'</p>'+
+   '<div class="bib"><b>À luz da Bíblia:</b> '+q.bible+'<br><br><b>Resposta mais madura neste cenário:</b> '+String.fromCharCode(65+q.best)+') '+best.t+'</div>'+
+   '<div class="idb"><b>Lente Igreja de Deus:</b><br>'+q.idb+'</div>'+
+   '</div>';
+  list.appendChild(item);
+ });
+}
+function copyCommitment(){
+ var a=document.getElementById('nonneg').value.trim()||'________';
+ var b=document.getElementById('obtain').value.trim()||'________';
+ var t='Diante de Deus, decido que não negociarei '+a+' para obter '+b+'.';
+ if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){alert('Compromisso copiado.')}).catch(function(){prompt('Copie:',t)})}
+ else{prompt('Copie:',t)}
+}
+function restart(){
+ profileValue='';document.querySelectorAll('#profile .chip').forEach(function(x){x.classList.remove('sel')});
+ document.getElementById('startBtn').classList.add('disabled');index=-1;Q=[];answersChosen=[];
+ showOnly(document.getElementById('intro'));setProgress();window.scrollTo({top:0,behavior:'smooth'});
+}
+setProgress();
+</script>
+</body>
+</html>
