@@ -6,103 +6,58 @@
 <meta name="theme-color" content="#f5f1ea">
 <title>Dossiê Miguel — Homens de Verdade</title>
 <style>
-:root{
-  --navy:#12243a;--navy2:#1d3552;--blue:#2f7ce0;--blue2:#eaf3ff;--gold:#c99435;
-  --cream:#f5f1ea;--paper:#fffdf9;--ink:#17283e;--muted:#68778b;--line:#dfe5ea;
-  --green:#5c9c7f;--red:#be665b;--amber:#d99a42;--shadow:0 18px 60px rgba(31,45,62,.13);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(120deg,#f7f3ed,#eef3f5);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-button,textarea{font:inherit}
-.app{min-height:100vh;display:grid;grid-template-columns:270px 1fr}
-.sidebar{
-  position:sticky;top:0;height:100vh;background:linear-gradient(180deg,#102239,#172d47);color:#fff;
-  padding:24px 18px 18px;overflow:auto;box-shadow:12px 0 36px rgba(19,36,58,.12);z-index:30
-}
-.logo{display:flex;gap:12px;align-items:center;padding:4px 8px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
-.logoMark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#fff,#d9e8fb);color:var(--navy);display:grid;place-items:center;font-weight:1000;font-size:1.3rem}
-.logoText strong{display:block;font-size:1rem;letter-spacing:.06em}.logoText span{font-size:.74rem;letter-spacing:.16em;color:#8fb4db;text-transform:uppercase}
-.nav{padding-top:18px}.navItem{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:12px 10px;border-radius:14px;cursor:pointer;transition:.2s;position:relative}
-.navItem:hover{background:rgba(255,255,255,.06)}.navItem.active{background:rgba(75,139,224,.20)}
-.navNum{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);font-weight:900;color:#dce9f6}
-.navItem.active .navNum{background:#2f7ce0;border-color:#8bc0ff;color:white;box-shadow:0 0 0 4px rgba(47,124,224,.15)}
-.navLabel strong{display:block;font-size:.88rem}.navLabel span{display:block;font-size:.72rem;color:#b9c8d8;margin-top:4px;line-height:1.35}.navTime{font-size:.66rem;color:#7fa7cf;margin-top:5px;font-weight:800}
-.sidebarFooter{margin-top:18px;padding:15px 10px;border-top:1px solid rgba(255,255,255,.12);color:#b7c6d6;font-size:.78rem;line-height:1.55}
-.sidebarFooter b{color:#fff}
-.main{min-width:0}
-.topbar{position:sticky;top:0;z-index:20;height:88px;background:rgba(255,255,255,.92);backdrop-filter:blur(13px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px}
-.topTitle{display:flex;align-items:center;gap:12px}.folder{width:42px;height:34px;border-radius:7px;background:#e8ad3f;position:relative}.folder:before{content:"";position:absolute;left:5px;top:-6px;width:20px;height:9px;background:#e8ad3f;border-radius:5px 5px 0 0}
-.topTitle strong{display:block}.topTitle span{display:block;color:var(--muted);font-size:.83rem;margin-top:2px}
-.meta{display:flex;gap:26px;align-items:center}.metaBox{display:flex;gap:9px;align-items:center}.metaIcon{font-size:1.35rem}.metaBox span{display:block;color:var(--muted);font-size:.7rem}.metaBox b{display:block;font-size:.82rem}
-.content{max-width:1220px;margin:0 auto;padding:28px}
-.screen{display:none}.screen.active{display:block;animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
-.heroCopy{padding:48px;display:flex;flex-direction:column;justify-content:center}
-.heroImage{position:relative;min-height:420px;background:#dbe4ea}.heroImage img{width:100%;height:100%;object-fit:cover;display:block}
-.heroImage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,28,48,.35))}
-.badge{display:inline-flex;width:max-content;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:#eef5ff;color:#245fa7;font-size:.72rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--navy);margin:0 0 14px;line-height:1.05}h1{font-size:clamp(2.6rem,5.5vw,5.2rem)}h2{font-size:clamp(2rem,4vw,3.8rem)}h3{font-size:clamp(1.25rem,2vw,1.85rem)}
-.lead{font-size:1.12rem;line-height:1.68;color:#526276}.quote{padding:19px 22px;border-left:4px solid var(--blue);background:#f4f8fd;border-radius:0 13px 13px 0;font-family:Georgia,serif;font-size:1.25rem;line-height:1.52;margin:20px 0;color:#253a53}
-.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:999px;padding:12px 19px;font-weight:900;cursor:pointer;transition:.2s}.btnPrimary{background:var(--navy);color:#fff}.btnPrimary:hover{transform:translateY(-1px);background:#1a3555}.btnGhost{background:#fff;border:1px solid var(--line);color:var(--navy)}.btn:disabled{opacity:.45;cursor:not-allowed}
-.sectionCard{padding:34px}.sectionHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px}.sectionHead p{max-width:720px;margin:0;color:var(--muted);line-height:1.55}.stepPill{white-space:nowrap;padding:8px 11px;border-radius:999px;background:#f0f5fb;color:#315a84;font-size:.74rem;font-weight:900}
-.timeline{display:grid;gap:10px;margin-top:22px}.timelineRow{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border:1px solid var(--line);background:#fff;border-radius:15px}.time{font-weight:1000;color:#2b67ad}.timelineRow strong{display:block}.timelineRow span{color:var(--muted);font-size:.88rem}
-.chip{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 11px;font-weight:800;cursor:pointer}.chip.selected{background:#eaf3ff;border-color:#6ca7ef;color:#245fa7}
-.choiceLayout{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px}.sceneImage{min-height:410px;border-radius:18px;overflow:hidden;position:relative;background:#e3e8ec}.sceneImage img{width:100%;height:100%;object-fit:cover;display:block}.sceneImage .caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.92);padding:8px 10px;border-radius:999px;font-size:.73rem;font-weight:800;color:var(--navy)}
-.options{display:grid;gap:10px;margin-top:16px}.option{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 15px;color:var(--ink);cursor:pointer;transition:.2s;box-shadow:0 6px 18px rgba(20,36,58,.035)}.option:hover{border-color:#8ab6ea;transform:translateY(-1px)}.option.selected{border-color:#2f7ce0;background:#f1f7ff;box-shadow:0 0 0 2px rgba(47,124,224,.08) inset}.option b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#152a43;color:#fff;margin-right:9px}
-.decisionProgress{display:flex;gap:7px;margin:18px 0 8px}.decisionProgress i{height:5px;flex:1;background:#e5eaf0;border-radius:999px}.decisionProgress i.done{background:#2f7ce0}
-.register{display:none;margin-top:14px;padding:14px;border-radius:14px;background:#f6f8fa;border:1px solid var(--line);color:#5d6c7f}.register.show{display:block}
-.evidenceGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.evidence{position:relative;background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;cursor:pointer;transition:.2s;min-height:150px}.evidence:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(20,36,58,.08)}.evidence.locked .detail{filter:blur(6px);user-select:none}.evidence .num{font-size:.7rem;font-weight:1000;color:#9b6d22;letter-spacing:.1em}.evidence .detail{margin-top:10px;color:#516174;line-height:1.55;transition:.3s}.evidence.open{background:#fffaf0;border-color:#dfc28d}.evidence.open .detail{filter:none}
-.poll{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+:root{--navy:#12243a;--navy2:#1d3552;--blue:#2f7ce0;--blue2:#eaf3ff;--gold:#c99435;--cream:#f5f1ea;--paper:#fffdf9;--ink:#17283e;--muted:#68778b;--line:#dfe5ea;--green:#5c9c7f;--red:#be665b;--shadow:0 18px 60px rgba(31,45,62,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(120deg,#f7f3ed,#eef3f5);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,textarea{font:inherit}
+.app{min-height:100vh;display:grid;grid-template-columns:270px 1fr}.sidebar{position:sticky;top:0;height:100vh;background:linear-gradient(180deg,#102239,#172d47);color:#fff;padding:24px 18px 18px;overflow:auto;box-shadow:12px 0 36px rgba(19,36,58,.12);z-index:30}
+.logo{display:flex;gap:12px;align-items:center;padding:4px 8px 24px;border-bottom:1px solid rgba(255,255,255,.12)}.logoMark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#fff,#d9e8fb);color:var(--navy);display:grid;place-items:center;font-weight:1000;font-size:1.3rem}.logoText strong{display:block;font-size:1rem;letter-spacing:.06em}.logoText span{font-size:.74rem;letter-spacing:.16em;color:#8fb4db;text-transform:uppercase}
+.nav{padding-top:18px}.navItem{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;padding:12px 10px;border-radius:14px;cursor:pointer;transition:.2s;position:relative}.navItem:hover:not(.locked){background:rgba(255,255,255,.06)}.navItem.active{background:rgba(75,139,224,.20)}.navItem.locked{opacity:.42;cursor:not-allowed}.navNum{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);font-weight:900;color:#dce9f6}.navItem.active .navNum{background:#2f7ce0;border-color:#8bc0ff;color:#fff;box-shadow:0 0 0 4px rgba(47,124,224,.15)}.navItem.done .navNum{background:#5c9c7f;border-color:#98d0b8}.navLabel strong{display:block;font-size:.88rem}.navLabel span{display:block;font-size:.72rem;color:#b9c8d8;margin-top:4px;line-height:1.35}.navTime{font-size:.66rem;color:#7fa7cf;margin-top:5px;font-weight:800}.sidebarFooter{margin-top:18px;padding:15px 10px;border-top:1px solid rgba(255,255,255,.12);color:#b7c6d6;font-size:.78rem;line-height:1.55}.sidebarFooter b{color:#fff}
+.main{min-width:0}.topbar{position:sticky;top:0;z-index:20;min-height:88px;background:rgba(255,255,255,.94);backdrop-filter:blur(13px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 28px}.topTitle{display:flex;align-items:center;gap:12px}.folder{width:42px;height:34px;border-radius:7px;background:#e8ad3f;position:relative}.folder:before{content:"";position:absolute;left:5px;top:-6px;width:20px;height:9px;background:#e8ad3f;border-radius:5px 5px 0 0}.topTitle strong{display:block}.topTitle span{display:block;color:var(--muted);font-size:.83rem;margin-top:2px}.meta{display:flex;gap:26px;align-items:center}.metaBox{display:flex;gap:9px;align-items:center}.metaIcon{font-size:1.35rem}.metaBox span{display:block;color:var(--muted);font-size:.7rem}.metaBox b{display:block;font-size:.82rem}
+.content{max-width:1220px;margin:0 auto;padding:28px}.screen{display:none}.screen.active{display:block;animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}.heroCopy{padding:48px;display:flex;flex-direction:column;justify-content:center}.heroImage{position:relative;min-height:420px;background:#dbe4ea}.heroImage img{width:100%;height:100%;object-fit:cover;display:block}.heroImage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,28,48,.35))}
+.badge{display:inline-flex;width:max-content;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:#eef5ff;color:#245fa7;font-size:.72rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--navy);margin:0 0 14px;line-height:1.05}h1{font-size:clamp(2.6rem,5.5vw,5.2rem)}h2{font-size:clamp(2rem,4vw,3.8rem)}h3{font-size:clamp(1.25rem,2vw,1.85rem)}.lead{font-size:1.12rem;line-height:1.68;color:#526276}.quote{padding:19px 22px;border-left:4px solid var(--blue);background:#f4f8fd;border-radius:0 13px 13px 0;font-family:Georgia,serif;font-size:1.25rem;line-height:1.52;margin:20px 0;color:#253a53}.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:999px;padding:12px 19px;font-weight:900;cursor:pointer;transition:.2s}.btnPrimary{background:var(--navy);color:#fff}.btnPrimary:hover{transform:translateY(-1px);background:#1a3555}.btnGhost{background:#fff;border:1px solid var(--line);color:var(--navy)}.btn:disabled{opacity:.42;cursor:not-allowed;transform:none}
+.sectionCard{padding:34px}.sectionHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px}.sectionHead p{max-width:720px;margin:0;color:var(--muted);line-height:1.55}.stepPill{white-space:nowrap;padding:8px 11px;border-radius:999px;background:#f0f5fb;color:#315a84;font-size:.74rem;font-weight:900}.storyDots,.decisionDots{display:flex;gap:7px;margin:14px 0}.storyDots button,.decisionDots button{width:11px;height:11px;border-radius:50%;border:0;background:#d8e0e8;padding:0;cursor:pointer}.storyDots button.active,.decisionDots button.active{background:#2f7ce0;box-shadow:0 0 0 4px rgba(47,124,224,.12)}.decisionDots button.done{background:#5c9c7f}
+.timeline{display:grid;gap:10px;margin-top:22px}.timelineRow{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border:1px solid var(--line);background:#fff;border-radius:15px}.time{font-weight:1000;color:#2b67ad}.timelineRow strong{display:block}.timelineRow span{color:var(--muted);font-size:.88rem}.chip{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 11px;font-weight:800;cursor:pointer}.chip.selected{background:#eaf3ff;border-color:#6ca7ef;color:#245fa7}
+.choiceLayout{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px}.sceneImage{min-height:410px;border-radius:18px;overflow:hidden;position:relative;background:#e3e8ec}.sceneImage img{width:100%;height:100%;object-fit:cover;display:block}.sceneImage .caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.92);padding:8px 10px;border-radius:999px;font-size:.73rem;font-weight:800;color:var(--navy)}.options{display:grid;gap:10px;margin-top:16px}.option{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 15px;color:var(--ink);cursor:pointer;transition:.2s;box-shadow:0 6px 18px rgba(20,36,58,.035)}.option:hover{border-color:#8ab6ea;transform:translateY(-1px)}.option.selected{border-color:#2f7ce0;background:#f1f7ff;box-shadow:0 0 0 2px rgba(47,124,224,.08) inset}.option b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#152a43;color:#fff;margin-right:9px}.register{display:none;margin-top:14px;padding:14px;border-radius:14px;background:#f6f8fa;border:1px solid var(--line);color:#5d6c7f}.register.show{display:block}
+.evidenceGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.evidence{position:relative;background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;transition:.2s;min-height:150px}.evidence.clickable{cursor:pointer}.evidence.clickable:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(20,36,58,.08)}.evidence.locked{opacity:.52}.evidence.locked .detail{filter:blur(6px);user-select:none}.evidence .num{font-size:.7rem;font-weight:1000;color:#9b6d22;letter-spacing:.1em}.evidence .detail{margin-top:10px;color:#516174;line-height:1.55;transition:.3s}.evidence.open{background:#fffaf0;border-color:#dfc28d}.evidence.open .detail{filter:none}.poll{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .interrogationGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.qCard{border:1px solid var(--line);border-radius:15px;background:#fff;padding:17px;cursor:pointer;transition:.2s}.qCard:hover{border-color:#8ab6ea}.qCard.open{background:#f6f9fd}.qCard .answer{display:none;color:#566579;line-height:1.55;margin-top:11px;padding-top:11px;border-top:1px dashed #ccd6df}.qCard.open .answer{display:block}
-.reportBanner{background:linear-gradient(120deg,#13263f,#24486e);color:#fff;padding:28px;border-radius:19px;margin-bottom:16px}.reportBanner h3{color:white}.reportBanner p{color:#d6e2ee;line-height:1.6}
-.reportGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.reportCard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px}.reportCard b{color:#7d5a20}.reportCard p{color:#5c6a7c;line-height:1.5}
-.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0}.chain span{padding:9px 11px;border-radius:999px;background:#eef4fb;color:#254c75;font-weight:900;font-size:.79rem}.chain em{font-style:normal;color:#97a4b2;font-weight:900}
-.bibleGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.bibleCard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.bibleHead{padding:16px 18px;background:#f7f9fb;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.bibleHead strong{color:var(--navy)}.bibleBody{display:none;padding:18px;color:#536276;line-height:1.6}.bibleCard.open .bibleBody{display:block}.bibleQuestion{font-family:Georgia,serif;font-size:1.1rem;color:#263b54;margin-bottom:12px}
-.rewriteGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rewrite{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.rewrite label{display:block;font-weight:900;color:var(--navy);margin-bottom:8px}.rewrite textarea,.mirror textarea{width:100%;min-height:110px;border:1px solid #d6dfe7;border-radius:12px;padding:12px;color:var(--ink);background:#fff;resize:vertical}
-.mirrorGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.mirror{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.mirror label{display:block;color:var(--navy);font-weight:900;margin-bottom:8px}
-.teacher{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border:0;border-radius:50%;background:#13263f;color:#fff;font-weight:1000;cursor:pointer;box-shadow:0 12px 30px rgba(19,38,63,.25)}.teacherPanel{display:none;position:fixed;right:74px;bottom:18px;z-index:60;width:min(420px,calc(100vw - 100px));max-height:64vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow)}.teacherPanel.show{display:block}.teacherPanel h4{margin:0 0 8px;color:var(--navy)}.teacherPanel p{margin:0;color:#536276;line-height:1.55}
-.mobileNav{display:none}
-@media(max-width:980px){
-  .app{grid-template-columns:1fr}.sidebar{display:none}.topbar{height:auto;padding:12px 15px;gap:10px;flex-wrap:wrap}.meta{gap:12px}.metaBox:nth-child(2){display:none}.content{padding:15px}.hero,.choiceLayout{grid-template-columns:1fr}.heroImage{min-height:320px}.heroCopy{padding:28px}.mobileNav{display:flex;overflow:auto;gap:7px;width:100%;padding-top:8px}.mobileNav button{white-space:nowrap;border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:999px;color:var(--navy);font-size:.75rem;font-weight:900}.mobileNav button.active{background:#eaf3ff;border-color:#6ca7ef;color:#245fa7}
-}
+.reportBanner{background:linear-gradient(120deg,#13263f,#24486e);color:#fff;padding:28px;border-radius:19px;margin-bottom:16px}.reportBanner h3{color:#fff}.reportBanner p{color:#d6e2ee;line-height:1.6}.reportGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.reportCard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px}.reportCard b{color:#7d5a20}.reportCard p{color:#5c6a7c;line-height:1.5}.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0}.chain span{padding:9px 11px;border-radius:999px;background:#eef4fb;color:#254c75;font-weight:900;font-size:.79rem}.chain em{font-style:normal;color:#97a4b2;font-weight:900}
+.bibleGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.bibleCard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.bibleHead{padding:16px 18px;background:#f7f9fb;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.bibleHead strong{color:var(--navy)}.bibleBody{display:none;padding:18px;color:#536276;line-height:1.6}.bibleCard.open .bibleBody{display:block}.bibleQuestion{font-family:Georgia,serif;font-size:1.1rem;color:#263b54;margin-bottom:12px}.rewriteGrid,.mirrorGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.rewrite,.mirror{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.rewrite label,.mirror label{display:block;font-weight:900;color:var(--navy);margin-bottom:8px}.rewrite textarea,.mirror textarea{width:100%;min-height:110px;border:1px solid #d6dfe7;border-radius:12px;padding:12px;color:var(--ink);background:#fff;resize:vertical}
+.notice{padding:12px 14px;border-radius:12px;background:#fff7e8;border:1px solid #ecd39e;color:#72551f;margin-top:14px;font-size:.88rem}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:100;background:#12243a;color:#fff;padding:11px 16px;border-radius:999px;box-shadow:var(--shadow);transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.teacher{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border:0;border-radius:50%;background:#13263f;color:#fff;font-weight:1000;cursor:pointer;box-shadow:0 12px 30px rgba(19,38,63,.25)}.teacherPanel{display:none;position:fixed;right:74px;bottom:18px;z-index:60;width:min(420px,calc(100vw - 100px));max-height:64vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow)}.teacherPanel.show{display:block}.teacherPanel h4{margin:0 0 8px;color:var(--navy)}.teacherPanel p{margin:0;color:#536276;line-height:1.55}.teacherPanel button{margin-top:12px}.mobileNav{display:none}
+@media(max-width:980px){.app{grid-template-columns:1fr}.sidebar{display:none}.topbar{height:auto;padding:12px 15px;gap:10px;flex-wrap:wrap}.meta{gap:12px}.metaBox:nth-child(2){display:none}.content{padding:15px}.hero,.choiceLayout{grid-template-columns:1fr}.heroImage{min-height:320px}.heroCopy{padding:28px}.mobileNav{display:flex;overflow:auto;gap:7px;width:100%;padding-top:8px}.mobileNav button{white-space:nowrap;border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:999px;color:var(--navy);font-size:.75rem;font-weight:900}.mobileNav button.active{background:#eaf3ff;border-color:#6ca7ef;color:#245fa7}.mobileNav button.locked{opacity:.4}}
 @media(max-width:680px){.meta{display:none}.evidenceGrid,.interrogationGrid,.reportGrid,.bibleGrid,.rewriteGrid,.mirrorGrid{grid-template-columns:1fr}.timelineRow{grid-template-columns:68px 1fr}.timelineRow .chip{grid-column:2}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="logo"><div class="logoMark">H</div><div class="logoText"><strong>HOMENS<br>DE VERDADE</strong><span>Caso Miguel</span></div></div>
-  <nav class="nav" id="nav"></nav>
-  <div class="sidebarFooter"><b>Regra da experiência</b><br>Não tente acertar a opção mais espiritual. Escolha o que parece mais realista. O laudo vem depois.</div>
+<div class="logo"><div class="logoMark">H</div><div class="logoText"><strong>HOMENS<br>DE VERDADE</strong><span>Caso Miguel</span></div></div>
+<nav class="nav" id="nav"></nav>
+<div class="sidebarFooter"><b>Regra da experiência</b><br>Não tente acertar a opção mais espiritual. Escolha o que parece mais realista. O laudo vem depois.</div>
 </aside>
 <main class="main">
-  <header class="topbar">
-    <div class="topTitle"><div class="folder"></div><div><strong>Dossiê Miguel</strong><span>Uma noite. Muitas decisões. O que realmente governava?</span></div></div>
-    <div class="meta">
-      <div class="metaBox"><div class="metaIcon">◷</div><div><span>Tempo estimado</span><b>2 horas</b></div></div>
-      <div class="metaBox"><div class="metaIcon">👥</div><div><span>Participantes</span><b>3 homens</b></div></div>
-      <div class="metaBox"><div class="metaIcon">▣</div><div><span>Base</span><b>Bíblia + Curso</b></div></div>
-    </div>
-    <div class="mobileNav" id="mobileNav"></div>
-  </header>
-  <div class="content" id="content"></div>
+<header class="topbar">
+<div class="topTitle"><div class="folder"></div><div><strong>Dossiê Miguel</strong><span>Uma noite. Muitas decisões. O que realmente governava?</span></div></div>
+<div class="meta"><div class="metaBox"><div class="metaIcon">◷</div><div><span>Tempo estimado</span><b>2 horas</b></div></div><div class="metaBox"><div class="metaIcon">👥</div><div><span>Participantes</span><b>3 homens</b></div></div><div class="metaBox"><div class="metaIcon">▣</div><div><span>Base</span><b>Bíblia + Curso</b></div></div></div>
+<div class="mobileNav" id="mobileNav"></div>
+</header>
+<div class="content" id="content"></div>
 </main>
 </div>
 <button class="teacher" id="teacherBtn">P</button>
-<div class="teacherPanel" id="teacherPanel"><h4>Nota do professor</h4><p id="teacherText"></p></div>
+<div class="teacherPanel" id="teacherPanel"><h4>Nota do professor</h4><p id="teacherText"></p><button class="btn btnGhost" onclick="toggleTeacherUnlock()">Liberar/limitar navegação</button></div>
+<div class="toast" id="toast"></div>
+
 <script>
 const sections=[
-{n:1,title:"Introdução",sub:"Conheça Miguel",time:"8 min"},
+{n:1,title:"Introdução",sub:"Conheça Miguel",time:"10 min"},
 {n:2,title:"Linha do Tempo",sub:"Onde começou?",time:"10 min"},
 {n:3,title:"Suas Decisões",sub:"Volte no tempo",time:"25 min"},
-{n:4,title:"Novas Evidências",sub:"O que vocês não sabiam",time:"10 min"},
+{n:4,title:"Novas Evidências",sub:"O que vocês não sabiam",time:"12 min"},
 {n:5,title:"Interrogatório",sub:"Converse com Miguel",time:"12 min"},
 {n:6,title:"Laudo Final",sub:"O que realmente aconteceu",time:"15 min"},
 {n:7,title:"À Luz da Bíblia",sub:"O que a Palavra nos ensina",time:"18 min"},
-{n:8,title:"Reescrevendo a Noite",sub:"Com o que aprendemos",time:"12 min"},
-{n:9,title:"Aplicação Pessoal",sub:"E agora?",time:"10 min"}
+{n:8,title:"Reescrevendo a Noite",sub:"Com o que aprendemos",time:"10 min"},
+{n:9,title:"Aplicação Pessoal",sub:"E agora?",time:"8 min"}
 ];
 const photos={
 office:"https://images.unsplash.com/photo-1758874383583-59c39da93e40?auto=format&fit=crop&fm=jpg&q=82&w=1800",
@@ -111,167 +66,106 @@ friends:"https://images.unsplash.com/photo-1599672525873-5763d2a823e2?auto=forma
 home:"https://images.unsplash.com/photo-1758876021591-4a48ab8968b6?auto=format&fit=crop&fm=jpg&q=82&w=1800",
 phone:"https://images.unsplash.com/photo-1758876021591-4a48ab8968b6?auto=format&fit=crop&fm=jpg&q=82&w=1800"
 };
-const decisions=[
-{time:"17:42",title:"Dois minutos depois",img:"office",text:"A reunião acabou. Miguel ainda tem quase duas horas de expediente.",q:"Sem pensar no ideal: o que ele faz agora?",opts:[
-["Volta para a mesa e começa a corrigir o projeto imediatamente.","responsabilidade","desempenho pode virar tentativa de recuperar valor"],
-["Vai buscar água ou café e fica alguns minutos sozinho.","pausa","a pausa pode virar adiamento sem enfrentamento"],
-["Manda ao gestor: “Depois queria entender melhor seu ponto.”","clareza","a conversa também pode servir para se justificar"],
-["Manda a um colega: “Você também achou desnecessário o jeito que ele falou?”","validação","a pergunta já conduz a resposta do colega"]
-]},
-{time:"18:18",title:"No caminho para casa",img:"car",text:"A reunião volta à cabeça. Miguel percebe que está irritado.",q:"Qual reação parece mais realista?",opts:[
-["Coloca música ou podcast e tenta parar de pensar nisso.","distração","pode apenas empurrar o assunto para depois"],
-["Repete a reunião mentalmente e monta o que gostaria de ter respondido.","controle","ruminação pode fortalecer a própria narrativa"],
-["Manda áudio: “Dia péssimo. Acho que meu chefe passou do ponto.”","conexão","ele já apresenta interpretação como fato"],
-["Para para comer ou tomar algo antes de seguir para casa.","conforto","o consumo pode virar rota automática de regulação"]
-]},
-{time:"19:32",title:"Uma publicação no feed",img:"phone",text:"Miguel vê alguém da mesma idade anunciando uma promoção profissional.",q:"Qual pensamento parece mais provável surgir primeiro?",opts:[
-["“Eu devia estar mais longe na carreira.”","comparação","crescimento pode virar cobrança identitária"],
-["“Preciso procurar outra oportunidade.”","movimento","uma decisão grande pode nascer de emoção não examinada"],
-["“Que bom para ele.” e continua rolando o feed.","normalidade","seguir rolando ainda pode alimentar comparação"],
-["“Meu problema é que me acomodei.”","autocrítica","a crítica pode virar acusação total contra si"]
-]},
-{time:"20:05",title:"O compromisso da noite",img:"friends",text:"Miguel tinha marcado de encontrar três amigos. Está cansado e sem muita vontade.",q:"O que ele provavelmente faria?",opts:[
-["Vai e tenta agir normalmente para ver se melhora.","presença","pode estar acompanhado e continuar escondido"],
-["Cancela e diz que está cansado; prefere ficar em casa.","descanso","ficar sozinho pode ser o caminho mais confortável para não ser visto"],
-["Vai, fica pouco tempo e volta cedo.","equilíbrio","cumprir presença não significa permitir conversa real"],
-["Manda: “Hoje estou meio estranho. Vocês vão ficar até que horas?”","abertura","a porta foi aberta, mas ainda pode ser fechada"]
-]},
-{time:"21:22",title:"Finalmente em casa",img:"home",text:"O apartamento está silencioso. O trabalho e a comparação continuam dentro dele.",q:"O que ele faz primeiro?",opts:[
-["Abre o notebook e adianta trabalho para segunda.","produtividade","produção pode virar tentativa de recuperar valor"],
-["Pede comida, escolhe uma série e deixa para amanhã.","lazer","a questão é o papel que isso exerce nessa noite"],
-["Deita no sofá e passa vídeos curtos sem escolher nada.","automatismo","o fluxo aumenta estímulo e prolonga a fuga"],
-["Toma banho, fica sem tela e depois decide o que fazer.","regulação","acalmar ajuda, mas não resolve sozinho o coração"]
-]},
-{time:"22:04",title:"Uma mensagem chega",img:"home",text:"Um amigo manda: “Sumiu hoje. Tudo certo?”",q:"Qual resposta é mais provável?",opts:[
-["“Tudo certo, só cansado.”","proteção","pode ser verdade parcial usada para continuar invisível"],
-["“Dia ruim no trabalho. Depois te conto.”","abertura","cria uma ponte, mas ainda pode não atravessá-la"],
-["Visualiza e responde só no dia seguinte.","adiamento","ganha espaço, mas mantém isolamento"],
-["Responde com uma piada e muda de assunto.","máscara","humor pode aliviar e também esconder"]
-]},
-{time:"23:31",title:"Um conteúdo aparece",img:"phone",text:"Miguel está no celular e surge uma sequência de imagens sensuais. Ele percebe que está vulnerável.",q:"Qual reação parece mais realista?",opts:[
-["Passa rápido para o próximo conteúdo e continua no aplicativo.","desvio","o ambiente e a vulnerabilidade continuam iguais"],
-["Fecha o aplicativo e abre outro.","mudança","trocar o estímulo pode manter a mesma lógica de fuga"],
-["Fica alguns segundos, fecha e diz que não vai voltar.","limite","a negociação com o limite já começou"],
-["Coloca o celular virado para baixo e vai para outro cômodo.","distância","mudar ambiente ajuda, mas não explica toda a cadeia"]
-]},
-{time:"00:17",title:"Depois da noite",img:"home",text:"Miguel deita cansado, envergonhado e ainda pensando no trabalho.",q:"Qual frase mais combina com o que ele pensa?",opts:[
-["“Amanhã eu me organizo e não deixo isso acontecer de novo.”","controle","estrutura ajuda, mas pode ignorar o que alimentou a noite"],
-["“Sou fraco demais. Deus deve estar cansado de mim.”","vergonha","condenação pode aprofundar o ciclo"],
-["“Foi só um dia ruim. Melhor esquecer.”","minimização","ignorar reduz dor, mas também aprendizado"],
-["“Preciso entender como cheguei até aqui.”","consciência","entender é importante, mas não substitui mudança concreta"]
-]}
+const story=[
+{time:"17h40",title:"A reunião",img:"office",body:"Durante uma reunião, o gestor aponta um problema em um projeto conduzido por Miguel e diz diante da equipe:",quote:"“Eu esperava uma condução melhor disso.”",extra:"Miguel responde: “Tudo bem. Vou corrigir.” Um colega pergunta se está tudo bem. Miguel diz: “Estou tranquilo. Isso não me afeta.”"},
+{time:"18h05",title:"No carro",img:"car",body:"A reunião começa a se repetir dentro da cabeça de Miguel.",quote:"“Ele fez isso para me diminuir.” · “Ninguém respeita o que eu faço.” · “Se eu não provar que sou bom, vão passar por cima de mim.”",extra:"O fato externo permaneceu o mesmo. O significado interno começou a crescer."},
+{time:"20h10",title:"O cancelamento",img:"friends",body:"Miguel tinha combinado de encontrar alguns amigos. Cancela e diz que está cansado.",quote:"“Hoje não vou. Preciso ficar quieto.”",extra:"Em casa, pede mais comida do que normalmente pediria e começa a alternar entre vídeos, redes e conteúdo aleatório."},
+{time:"21h22",title:"A comparação",img:"home",body:"Entre um vídeo e outro, Miguel vê gente viajando, sendo promovida, namorando e casando.",quote:"“Todo mundo está avançando e eu estou ficando para trás.”",extra:"Uma hora passa. Depois outra. O problema do trabalho não foi resolvido; a sensação dentro dele também não."},
+{time:"23h34",title:"A negociação",img:"phone",body:"Surge conteúdo sensual. Miguel fecha. Alguns minutos depois, volta.",quote:"“Só vou olhar.” · “Eu já estou mal mesmo.” · “É só hoje.” · “Amanhã eu recomeço.”",extra:"Às 00h17, depois da queda, ele pensa: “Sou muito fraco. Deus deve estar cansado de mim.”"}
 ];
-const state={sec:1,decision:0,choices:[],timeline:[],openedEvidence:0,openedQ:0};
-const teacherNotes={
-1:"8 min. Apresente Miguel e a regra: não existe opção religiosa escondida. Não revele o tema central antes da hora.",
-2:"10 min. Cada homem defende onde acha que o problema começou. Marque mais de um horário se houver divergência.",
-3:"25 min. São 8 microdecisões, mas rápidas. Dê cerca de 2–3 min por cena: 1 escolhe, os outros questionam, registra e segue.",
-4:"10 min. Revele uma evidência por vez. Pergunte: isso muda compreensão? Não responda ainda se muda responsabilidade.",
-5:"12 min. Cada homem escolhe duas perguntas. Abra até 6 se a conversa estiver boa; pare em 4 se estiver longa.",
-6:"15 min. Aqui você ensina a cadeia e revisa as escolhas do grupo. Não transforme o relatório em diagnóstico psicológico.",
-7:"18 min. Leia os textos na Bíblia. O site traz perguntas e síntese, não substitui a leitura bíblica.",
-8:"12 min. Sem alternativas. Eles precisam construir respostas maduras, concretas e possíveis.",
-9:"10 min. Silêncio, aplicação privada e oração. Ninguém precisa compartilhar suas respostas."
-};
+const decisions=[
+{time:"17:42",title:"Dois minutos depois",img:"office",text:"A reunião acabou. Miguel ainda tem quase duas horas de expediente.",q:"Sem pensar no ideal: o que ele faz agora?",opts:[["Volta para a mesa e começa a corrigir o projeto imediatamente.","responsabilidade","desempenho pode virar tentativa de recuperar valor"],["Vai buscar água ou café e fica alguns minutos sozinho.","pausa","a pausa pode virar adiamento sem enfrentamento"],["Manda ao gestor: “Depois queria entender melhor seu ponto.”","clareza","a conversa também pode servir para se justificar"],["Manda a um colega: “Você também achou desnecessário o jeito que ele falou?”","validação","a pergunta já conduz a resposta do colega"]]},
+{time:"18:18",title:"No caminho para casa",img:"car",text:"A reunião volta à cabeça. Miguel percebe que está irritado.",q:"Qual reação parece mais realista?",opts:[["Coloca música ou podcast e tenta parar de pensar nisso.","distração","pode apenas empurrar o assunto para depois"],["Repete a reunião mentalmente e monta o que gostaria de ter respondido.","controle","ruminação pode fortalecer a própria narrativa"],["Manda áudio: “Dia péssimo. Acho que meu chefe passou do ponto.”","conexão","ele já apresenta interpretação como fato"],["Para para comer ou tomar algo antes de seguir para casa.","conforto","o consumo pode virar rota automática de regulação"]]},
+{time:"19:32",title:"Uma publicação no feed",img:"phone",text:"Miguel vê alguém da mesma idade anunciando uma promoção profissional.",q:"Qual pensamento parece mais provável surgir primeiro?",opts:[["“Eu devia estar mais longe na carreira.”","comparação","crescimento pode virar cobrança identitária"],["“Preciso procurar outra oportunidade.”","movimento","uma decisão grande pode nascer de emoção não examinada"],["“Que bom para ele.” e continua rolando o feed.","normalidade","seguir rolando ainda pode alimentar comparação"],["“Meu problema é que me acomodei.”","autocrítica","a crítica pode virar acusação total contra si"]]},
+{time:"20:05",title:"O compromisso da noite",img:"friends",text:"Miguel tinha marcado de encontrar três amigos. Está cansado e sem muita vontade.",q:"O que ele provavelmente faria?",opts:[["Vai e tenta agir normalmente para ver se melhora.","presença","pode estar acompanhado e continuar escondido"],["Cancela e diz que está cansado; prefere ficar em casa.","descanso","ficar sozinho pode ser o caminho mais confortável para não ser visto"],["Vai, fica pouco tempo e volta cedo.","equilíbrio","cumprir presença não significa permitir conversa real"],["Manda: “Hoje estou meio estranho. Vocês vão ficar até que horas?”","abertura","a porta foi aberta, mas ainda pode ser fechada"]]},
+{time:"21:22",title:"Finalmente em casa",img:"home",text:"O apartamento está silencioso. O trabalho e a comparação continuam dentro dele.",q:"O que ele faz primeiro?",opts:[["Abre o notebook e adianta trabalho para segunda.","produtividade","produção pode virar tentativa de recuperar valor"],["Pede comida, escolhe uma série e deixa para amanhã.","lazer","a questão é o papel que isso exerce nessa noite"],["Deita no sofá e passa vídeos curtos sem escolher nada.","automatismo","o fluxo aumenta estímulo e prolonga a fuga"],["Toma banho, fica sem tela e depois decide o que fazer.","regulação","acalmar ajuda, mas não resolve sozinho o coração"]]},
+{time:"22:04",title:"Uma mensagem chega",img:"home",text:"Um amigo manda: “Sumiu hoje. Tudo certo?”",q:"Qual resposta é mais provável?",opts:[["“Tudo certo, só cansado.”","proteção","pode ser verdade parcial usada para continuar invisível"],["“Dia ruim no trabalho. Depois te conto.”","abertura","cria uma ponte, mas ainda pode não atravessá-la"],["Visualiza e responde só no dia seguinte.","adiamento","ganha espaço, mas mantém isolamento"],["Responde com uma piada e muda de assunto.","máscara","humor pode aliviar e também esconder"]]},
+{time:"23:31",title:"Um conteúdo aparece",img:"phone",text:"Miguel está no celular e surge uma sequência de imagens sensuais. Ele percebe que está vulnerável.",q:"Qual reação parece mais realista?",opts:[["Passa rápido para o próximo conteúdo e continua no aplicativo.","desvio","o ambiente e a vulnerabilidade continuam iguais"],["Fecha o aplicativo e abre outro.","mudança","trocar o estímulo pode manter a mesma lógica de fuga"],["Fica alguns segundos, fecha e diz que não vai voltar.","limite","a negociação com o limite já começou"],["Coloca o celular virado para baixo e vai para outro cômodo.","distância","mudar ambiente ajuda, mas não explica toda a cadeia"]]},
+{time:"00:17",title:"Depois da noite",img:"home",text:"Miguel deita cansado, envergonhado e ainda pensando no trabalho.",q:"Qual frase mais combina com o que ele pensa?",opts:[["“Amanhã eu me organizo e não deixo isso acontecer de novo.”","controle","estrutura ajuda, mas pode ignorar o que alimentou a noite"],["“Sou fraco demais. Deus deve estar cansado de mim.”","vergonha","condenação pode aprofundar o ciclo"],["“Foi só um dia ruim. Melhor esquecer.”","minimização","ignorar reduz dor, mas também aprendizado"],["“Preciso entender como cheguei até aqui.”","consciência","entender é importante, mas não substitui mudança concreta"]]}
+];
+const initialState=()=>({sec:1,maxUnlocked:1,teacherUnlock:false,storyIndex:0,decision:0,choices:Array(decisions.length).fill(null),timeline:[],openedEvidence:0,poll:null,openQs:[],bibleOpen:[],rewrite:["","","",""],mirror:["","","","","",""]});
+let state=initialState();
+const teacherNotes={1:"10 min. Deixe a história crescer cena por cena. Não ensine a cadeia ainda.",2:"10 min. Cada homem defende onde acha que o problema começou. Marque divergências.",3:"25 min. Oito microdecisões. 2–3 min por cena. Não revele análise.",4:"12 min. Revele os quatro arquivos em ordem e só então peça o posicionamento.",5:"12 min. Abra pelo menos três perguntas. Cada homem escolhe ao menos uma.",6:"15 min. Agora você ensina a cadeia usando as escolhas reais do grupo.",7:"18 min. Leiam os textos completos. Abra as quatro sínteses.",8:"10 min. Sem alternativas. Eles constroem respostas maduras.",9:"8 min. Aplicação privada e oração. Não exija compartilhamento."};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function complete(sec){state.maxUnlocked=Math.max(state.maxUnlocked,Math.min(9,sec+1))}
 function initNav(){
  const nav=document.getElementById("nav"),mob=document.getElementById("mobileNav");
  nav.innerHTML=sections.map(s=>'<div class="navItem" data-sec="'+s.n+'" onclick="go('+s.n+')"><div class="navNum">'+s.n+'</div><div class="navLabel"><strong>'+s.title+'</strong><span>'+s.sub+'</span><div class="navTime">'+s.time+'</div></div></div>').join("");
  mob.innerHTML=sections.map(s=>'<button data-sec="'+s.n+'" onclick="go('+s.n+')">'+s.n+'. '+s.title+'</button>').join("");
 }
-function go(n){state.sec=n;render()}
 function setNav(){
- document.querySelectorAll("[data-sec]").forEach(el=>el.classList.toggle("active",Number(el.dataset.sec)===state.sec));
+ document.querySelectorAll("[data-sec]").forEach(el=>{const n=Number(el.dataset.sec);el.classList.toggle("active",n===state.sec);el.classList.toggle("done",n<state.maxUnlocked);el.classList.toggle("locked",!state.teacherUnlock&&n>state.maxUnlocked)});
  document.getElementById("teacherText").textContent=teacherNotes[state.sec]||"";
 }
-function nextSec(){if(state.sec<9){state.sec++;render()}}
-function hero(){
- return '<section class="screen active card hero"><div class="heroCopy"><div class="badge">ATO 1 · ABERTURA</div><h1>DOSSIÊ MIGUEL</h1><p class="lead">Miguel tem 30 anos. É cristão desde a adolescência, serve na igreja, trabalha bem e costuma ser visto como alguém responsável.</p><div class="quote">Uma noite. Muitas decisões. A pergunta não será apenas “o que ele fez?”, mas “o que estava governando Miguel?”</div><p class="lead">A história vai ser revelada em etapas. Não procurem a resposta mais espiritual. Procurem a reação mais realista.</p><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Abrir o caso</button></div></div><div class="heroImage"><img src="'+photos.office+'" alt="Homem sob pressão no ambiente de trabalho"></div></section>';
+function go(n){if(!state.teacherUnlock&&n>state.maxUnlocked){showToast("Conclua a etapa atual para liberar esta parte.");return}state.sec=n;render()}
+function unlockAndGo(n){complete(state.sec);state.sec=n;render()}
+function toggleTeacherUnlock(){state.teacherUnlock=!state.teacherUnlock;setNav();showToast(state.teacherUnlock?"Navegação do professor liberada.":"Navegação novamente limitada ao progresso.")}
+function introScreen(){
+ const s=story[state.storyIndex],dots=story.map((_,i)=>'<button class="'+(i===state.storyIndex?"active":"")+'" onclick="setStory('+i+')"></button>').join("");
+ return '<section class="screen active card hero"><div class="heroCopy"><div class="badge">ATO 1 · '+s.time+'</div><h1>'+s.title+'</h1><p class="lead">'+s.body+'</p><div class="quote">'+s.quote+'</div><p class="lead" style="font-size:.98rem">'+s.extra+'</p><div class="storyDots">'+dots+'</div><div class="btnRow"><button class="btn btnGhost" onclick="prevStory()" '+(state.storyIndex===0?"disabled":"")+'>Anterior</button><button class="btn btnPrimary" onclick="nextStory()">'+(state.storyIndex===story.length-1?"Ir para a linha do tempo":"Continuar história")+'</button></div></div><div class="heroImage"><img src="'+photos[s.img]+'" alt="'+esc(s.title)+'"></div></section>';
 }
-function timeline(){
- const rows=[
- ["17h40","Crítica pública","“Eu esperava uma condução melhor disso.”"],
- ["18h05","Interpretação","“Ele fez isso para me diminuir.”"],
- ["20h10","Isolamento","Cancela encontro, pede comida, começa a rolar conteúdo."],
- ["21h22","Busca de alívio","Trabalho, comida, tela, comparação e distração."],
- ["23h34","Negociação","“Só vou olhar. É só hoje.”"],
- ["00h17","Fruto visível","Prazer breve → culpa → vergonha → isolamento."]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 2 · LINHA DO TEMPO</div><h2>Onde vocês acham que a noite começou a desandar?</h2><p>Marquem os horários que vocês defenderiam. O sistema guarda a hipótese e só volta nela no laudo final.</p></div><div class="stepPill">10 min</div></div><div class="timeline">'+rows.map(r=>'<div class="timelineRow"><div class="time">'+r[0]+'</div><div><strong>'+r[1]+'</strong><span>'+r[2]+'</span></div><button class="chip '+(state.timeline.includes(r[0])?'selected':'')+'" onclick="toggleTime(\''+r[0]+'\',this)">marcar</button></div>').join("")+'</div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Voltar para 17h42</button></div></section>';
+function setStory(i){state.storyIndex=i;render()}function prevStory(){if(state.storyIndex>0){state.storyIndex--;render()}}function nextStory(){if(state.storyIndex<story.length-1){state.storyIndex++;render()}else{unlockAndGo(2)}}
+function timelineScreen(){
+ const rows=[["17h40","Crítica pública","“Eu esperava uma condução melhor disso.”"],["18h05","Interpretação","“Ele fez isso para me diminuir.”"],["20h10","Isolamento","Cancela encontro, comida e tela."],["21h22","Busca de alívio","Comparação, distração e conforto."],["23h34","Negociação","“Só vou olhar. É só hoje.”"],["00h17","Fruto visível","Prazer breve → culpa → vergonha → isolamento."]];
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 2 · HIPÓTESE INICIAL</div><h2>Onde vocês acham que a noite começou a desandar?</h2><p>Marquem um ou mais horários. O sistema vai guardar a hipótese e só retomá-la no laudo final.</p></div><div class="stepPill">10 min</div></div><div class="timeline">'+rows.map(r=>'<div class="timelineRow"><div class="time">'+r[0]+'</div><div><strong>'+r[1]+'</strong><span>'+r[2]+'</span></div><button class="chip '+(state.timeline.includes(r[0])?"selected":"")+'" onclick="toggleTime(\''+r[0]+'\')">marcar</button></div>').join("")+'</div>'+(state.timeline.length===0?'<div class="notice">Marquem pelo menos um ponto antes de seguir.</div>':'')+'<div class="btnRow"><button class="btn btnPrimary" onclick="finishTimeline()" '+(state.timeline.length===0?"disabled":"")+'>Voltar para 17h42</button></div></section>';
 }
-function toggleTime(t){state.timeline=state.timeline.includes(t)?state.timeline.filter(x=>x!==t):state.timeline.concat(t);render()}
+function toggleTime(t){state.timeline=state.timeline.includes(t)?state.timeline.filter(x=>x!==t):state.timeline.concat(t);render()}function finishTimeline(){if(!state.timeline.length)return;unlockAndGo(3)}
 function choicesScreen(){
  const d=decisions[state.decision],saved=state.choices[state.decision];
- const prog=decisions.map((_,i)=>'<i class="'+(i<state.decision || state.choices[i]?'done':'')+'"></i>').join("");
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 3 · DECISÕES '+(state.decision+1)+' / '+decisions.length+'</div><h2>'+d.time+' · '+d.title+'</h2><p>'+d.text+'</p></div><div class="stepPill">Investigador '+((state.decision%3)+1)+'</div></div><div class="decisionProgress">'+prog+'</div><div class="choiceLayout"><div class="sceneImage"><img src="'+photos[d.img]+'" alt="Cena do caso Miguel"><div class="caption">'+d.time+' · reconstituição</div></div><div><h3>'+d.q+'</h3><p class="lead" style="font-size:.96rem">Escolham o que parece mais humano e provável — não o que parece “a resposta certa”.</p><div class="options">'+d.opts.map((o,i)=>'<button class="option '+(saved&&saved.idx===i?'selected':'')+'" onclick="saveChoice('+i+')"><b>'+String.fromCharCode(65+i)+'</b>'+o[0]+'</button>').join("")+'</div><div id="reg" class="register '+(saved?'show':'')+'">'+(saved?'Decisão registrada. Sem análise por enquanto.':'')+'</div><div class="btnRow"><button class="btn btnGhost" onclick="prevDecision()" '+(state.decision===0?'disabled':'')+'>Anterior</button><button class="btn btnPrimary" onclick="nextDecision()" '+(!saved?'disabled':'')+'>'+(state.decision===decisions.length-1?'Fechar decisões':'Próxima cena')+'</button></div></div></div></section>';
+ const dots=decisions.map((_,i)=>'<button class="'+(i===state.decision?"active ":"")+(state.choices[i]?"done":"")+'" onclick="jumpDecision('+i+')"></button>').join("");
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 3 · DECISÃO '+(state.decision+1)+' / '+decisions.length+'</div><h2>'+d.time+' · '+d.title+'</h2><p>'+d.text+'</p></div><div class="stepPill">Investigador '+((state.decision%3)+1)+'</div></div><div class="decisionDots">'+dots+'</div><div class="choiceLayout"><div class="sceneImage"><img src="'+photos[d.img]+'" alt="Cena do caso Miguel"><div class="caption">'+d.time+' · reconstituição</div></div><div><h3>'+d.q+'</h3><p class="lead" style="font-size:.96rem">Escolham a reação mais realista. A análise só aparece no laudo.</p><div class="options">'+d.opts.map((o,i)=>'<button class="option '+(saved&&saved.idx===i?"selected":"")+'" onclick="saveChoice('+i+')"><b>'+String.fromCharCode(65+i)+'</b>'+o[0]+'</button>').join("")+'</div><div class="register '+(saved?"show":"")+'">'+(saved?"Decisão registrada. Sem análise por enquanto.":"")+'</div><div class="btnRow"><button class="btn btnGhost" onclick="prevDecision()" '+(state.decision===0?"disabled":"")+'>Anterior</button><button class="btn btnPrimary" onclick="nextDecision()" '+(!saved?"disabled":"")+'>'+(state.decision===decisions.length-1?"Fechar decisões":"Próxima cena")+'</button></div></div></div></section>';
 }
-function saveChoice(i){state.choices[state.decision]={idx:i,data:decisions[state.decision].opts[i]};render()}
-function prevDecision(){if(state.decision>0){state.decision--;render()}}
-function nextDecision(){if(!state.choices[state.decision])return;if(state.decision<decisions.length-1){state.decision++;render()}else{state.sec=4;render()}}
+function saveChoice(i){state.choices[state.decision]={idx:i,data:decisions[state.decision].opts[i]};render()}function prevDecision(){if(state.decision>0){state.decision--;render()}}function jumpDecision(i){if(i<=state.decision||state.choices[i]){state.decision=i;render()}else showToast("Conclua as decisões anteriores primeiro.")}
+function nextDecision(){if(!state.choices[state.decision])return;if(state.decision<decisions.length-1){state.decision++;render()}else{complete(3);state.sec=4;render()}}
 function evidenceScreen(){
- const ev=[
- ["SONO","Miguel vinha dormindo mal havia semanas. Cansaço não cria automaticamente uma escolha, mas reduz margem de regulação e aumenta vulnerabilidade."],
- ["HISTÓRIA","O pai valorizava muito desempenho. A frase “você consegue fazer melhor” apareceu repetidamente na infância."],
- ["SOLIDÃO","Miguel percebe amigos avançando em namoro, casamento e projetos pessoais. Ele não diz isso em voz alta, mas sente que está ficando para trás."],
- ["CONEXÃO","Há semanas Miguel não tem uma conversa realmente profunda com ninguém. Ele está cercado de gente, mas pouco conhecido."]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 4 · NOVAS EVIDÊNCIAS</div><h2>O que vocês não sabiam sobre Miguel</h2><p>Clique em cada arquivo. A função não é inocentar Miguel; é aumentar a qualidade da investigação.</p></div><div class="stepPill">10 min</div></div><div class="evidenceGrid">'+ev.map((e,i)=>'<div class="evidence '+(i<state.openedEvidence?'open':'locked')+'" onclick="openEvidence('+i+')"><div class="num">ARQUIVO 0'+(i+1)+'</div><h3>'+e[0]+'</h3><div class="detail">'+e[1]+'</div></div>').join("")+'</div><div class="poll"><button class="chip">“Isso muda tudo.”</button><button class="chip">“Isso não muda nada.”</button><button class="chip">“Muda a compreensão, não apaga responsabilidade.”</button></div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Abrir interrogatório</button></div></section>';
+ const ev=[["SONO","Miguel vinha dormindo mal havia semanas. Cansaço não cria automaticamente uma escolha, mas reduz margem de regulação e aumenta vulnerabilidade."],["HISTÓRIA","O pai valorizava muito desempenho. A frase “você consegue fazer melhor” apareceu repetidamente na infância."],["SOLIDÃO","Miguel percebe amigos avançando em namoro, casamento e projetos. Não diz isso, mas sente que está ficando para trás."],["CONEXÃO","Há semanas Miguel não tem uma conversa realmente profunda com ninguém. Está cercado de gente, mas pouco conhecido."]];
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 4 · NOVAS EVIDÊNCIAS</div><h2>O que vocês não sabiam sobre Miguel</h2><p>Abram os arquivos em ordem. Nova informação aumenta compreensão — mas ainda precisamos discutir responsabilidade.</p></div><div class="stepPill">12 min</div></div><div class="evidenceGrid">'+ev.map((e,i)=>{const open=i<state.openedEvidence,next=i===state.openedEvidence;return '<div class="evidence '+(open?"open ":"")+(next?"clickable ":"")+(i>state.openedEvidence?"locked":"")+'" '+(next?'onclick="openEvidence('+i+')"':'')+'><div class="num">ARQUIVO 0'+(i+1)+'</div><h3>'+e[0]+'</h3><div class="detail">'+e[1]+'</div></div>'}).join("")+'</div><h3 style="margin-top:22px">Isso muda o julgamento?</h3><div class="poll">'+["Muda tudo","Não muda nada","Muda a compreensão, não apaga responsabilidade"].map((p,i)=>'<button class="chip '+(state.poll===i?"selected":"")+'" onclick="setPoll('+i+')">'+p+'</button>').join("")+'</div>'+(state.openedEvidence<4?'<div class="notice">Abra os quatro arquivos para liberar a próxima etapa.</div>':'')+'<div class="btnRow"><button class="btn btnPrimary" onclick="finishEvidence()" '+(state.openedEvidence<4||state.poll===null?"disabled":"")+'>Abrir interrogatório</button></div></section>';
 }
-function openEvidence(i){state.openedEvidence=Math.max(state.openedEvidence,i+1);render()}
+function openEvidence(i){if(i!==state.openedEvidence)return;state.openedEvidence++;render()}function setPoll(i){state.poll=i;render()}function finishEvidence(){if(state.openedEvidence<4||state.poll===null)return;unlockAndGo(5)}
+const questions=[["O que mais doeu na fala do seu chefe?","“Não foi só a crítica. Foi a sensação de que todo mundo viu que talvez eu não seja tão bom quanto pensam.”"],["O que você queria sentir quando chegou em casa?","“Eu acho que eu queria parar de sentir. Só isso.”"],["Por que você não falou com ninguém?","“Eu nem sabia explicar e não queria parecer fraco ou dramático.”"],["Quando você começou a negociar consigo mesmo?","“Bem antes do conteúdo. Quando comecei a dizer que eu merecia desligar de tudo.”"],["Se a pornografia não aparecesse, a noite estaria resolvida?","“Não. Eu ainda estaria com raiva, me comparando e tentando provar alguma coisa.”"],["O que você acha que precisava provar?","“Que eu não sou mediano. Que eu consigo. Que não podem olhar para mim e pensar que eu falhei.”"]];
 function interrogationScreen(){
- const qs=[
- ["O que mais doeu na fala do seu chefe?","“Não foi só a crítica. Foi a sensação de que todo mundo viu que talvez eu não seja tão bom quanto pensam.”"],
- ["O que você queria sentir quando chegou em casa?","“Eu acho que eu queria parar de sentir. Só isso.”"],
- ["Por que você não falou com ninguém?","“Eu nem sabia explicar e não queria parecer fraco ou dramático.”"],
- ["Quando você começou a negociar consigo mesmo?","“Bem antes do conteúdo. Quando comecei a dizer que eu merecia desligar de tudo.”"],
- ["Se a pornografia não aparecesse, a noite estaria resolvida?","“Não. Eu ainda estaria com raiva, me comparando e tentando provar alguma coisa.”"],
- ["O que você acha que precisava provar?","“Que eu não sou mediano. Que eu consigo. Que não podem olhar para mim e pensar que eu falhei.”"]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 5 · INTERROGATÓRIO</div><h2>Agora vocês podem perguntar a Miguel</h2><p>Cada homem escolhe duas perguntas. Abram apenas o necessário para manter a conversa viva.</p></div><div class="stepPill">12 min</div></div><div class="interrogationGrid">'+qs.map((q,i)=>'<div class="qCard" onclick="this.classList.toggle(\'open\')"><strong>'+q[0]+'</strong><div class="answer">'+q[1]+'</div></div>').join("")+'</div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Abrir o laudo</button></div></section>';
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 5 · INTERROGATÓRIO</div><h2>Agora vocês podem perguntar a Miguel</h2><p>Cada homem escolha pelo menos uma pergunta. O objetivo é ouvir antes de concluir.</p></div><div class="stepPill">12 min</div></div><div class="interrogationGrid">'+questions.map((q,i)=>'<div class="qCard '+(state.openQs.includes(i)?"open":"")+'" onclick="toggleQ('+i+')"><strong>'+q[0]+'</strong><div class="answer">'+q[1]+'</div></div>').join("")+'</div><div class="notice">Perguntas abertas: '+state.openQs.length+' de 6. Abra pelo menos 3 antes do laudo.</div><div class="btnRow"><button class="btn btnPrimary" onclick="finishInterrogation()" '+(state.openQs.length<3?"disabled":"")+'>Abrir o laudo</button></div></section>';
 }
+function toggleQ(i){state.openQs=state.openQs.includes(i)?state.openQs.filter(x=>x!==i):state.openQs.concat(i);render()}function finishInterrogation(){if(state.openQs.length<3)return;unlockAndGo(6)}
 function reportScreen(){
- const selected=state.choices.filter(Boolean);
- const cards=selected.map((c,i)=>'<div class="reportCard"><b>'+decisions[i].time+' · '+c.data[1]+'</b><p><strong>Escolha:</strong> '+c.data[0]+'</p><p><strong>Ponto cego possível:</strong> '+c.data[2]+'</p></div>').join("");
+ const cards=state.choices.map((c,i)=>c?'<div class="reportCard"><b>'+decisions[i].time+' · '+esc(c.data[1])+'</b><p><strong>Escolha:</strong> '+esc(c.data[0])+'</p><p><strong>Ponto cego possível:</strong> '+esc(c.data[2])+'</p></div>':'').join("");
  const hypothesis=state.timeline.length?state.timeline.join(", "):"nenhum ponto marcado";
- return '<section class="screen active"><div class="reportBanner"><h3>O LAUDO FOI ABERTO</h3><p>A hipótese inicial de vocês foi: <strong>'+hypothesis+'</strong>. Agora a história deixa de ser uma coleção de episódios e aparece como processo.</p></div><div class="card sectionCard"><h2>O comportamento final foi o último capítulo.</h2><div class="chain"><span>FATO</span><em>→</em><span>INTERPRETAÇÃO</span><em>→</em><span>CRENÇA</span><em>→</em><span>EMOÇÃO</span><em>→</em><span>DESEJO DE ALÍVIO</span><em>→</em><span>NEGOCIAÇÃO</span><em>→</em><span>ESCOLHA</span><em>→</em><span>FRUTO</span></div><div class="quote">Contexto explica comportamento. Não elimina responsabilidade. Responsabilidade não exige ignorar contexto.</div><div class="reportGrid">'+cards+'</div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Agora: Bíblia + curso</button></div></div></section>';
+ return '<section class="screen active"><div class="reportBanner"><h3>O LAUDO FOI ABERTO</h3><p>A hipótese inicial de vocês foi: <strong>'+hypothesis+'</strong>. Agora os episódios aparecem como processo.</p></div><div class="card sectionCard"><h2>O comportamento final foi o último capítulo.</h2><div class="chain"><span>FATO</span><em>→</em><span>INTERPRETAÇÃO</span><em>→</em><span>CRENÇA</span><em>→</em><span>EMOÇÃO</span><em>→</em><span>DESEJO DE ALÍVIO</span><em>→</em><span>NEGOCIAÇÃO</span><em>→</em><span>ESCOLHA</span><em>→</em><span>FRUTO</span></div><div class="quote">Contexto explica comportamento. Não elimina responsabilidade. Responsabilidade não exige ignorar contexto.</div><div class="reportGrid">'+cards+'</div><div class="btnRow"><button class="btn btnPrimary" onclick="finishReport()">Agora: Bíblia + curso</button></div></div></section>';
 }
+function finishReport(){unlockAndGo(7)}
+const bible=[["Tiago 1:14–15","O texto descreve apenas o ato final ou um processo?","Desejo, atração, desenvolvimento e fruto. A tentação não é o mesmo que pecado consumado; ao mesmo tempo, o processo pode ser alimentado."],["1 Coríntios 6:12","Qual palavra muda a conversa?","DOMINADO. A pergunta não é apenas “é permitido?”, mas “isso começou a me governar?”."],["Efésios 4:26–27","Sentir raiva e pecar são a mesma coisa?","Não automaticamente. A emoção é real; a responsabilidade aparece no que fazemos com ela e no espaço que damos a ela."],["Gálatas 5:16,22–25","Domínio próprio é só força de vontade?","Não. É fruto de uma vida que aprende a andar no Espírito — em verdade, decisões, limites, práticas e comunidade."]];
 function bibleScreen(){
- const cards=[
- ["Tiago 1:14–15","O texto descreve apenas o ato final ou um processo?","Desejo, atração, desenvolvimento e fruto. A tentação não precisa ser tratada como pecado consumado, mas também não é neutra quando alimentada."],
- ["1 Coríntios 6:12","Qual palavra muda a conversa?","DOMINADO. A pergunta não é apenas “é permitido?”, mas “isso começou a me governar?”. Liberdade inclui não precisar obedecer a tudo o que se deseja."],
- ["Efésios 4:26–27","Sentir raiva e pecar são a mesma coisa?","Não automaticamente. A emoção é real; a responsabilidade aparece no que fazemos com ela, no que alimentamos e no espaço que damos."],
- ["Gálatas 5:16,22–25","Domínio próprio é só força de vontade?","Não. É fruto de uma vida que aprende a andar no Espírito — e se torna concreto em verdade, decisões, limites, práticas e comunidade."]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 7 · À LUZ DA BÍBLIA</div><h2>Agora sim: o texto bíblico entra no caso</h2><p>Primeiro façam a pergunta. Depois cliquem para abrir a síntese. Leiam os textos completos na Bíblia.</p></div><div class="stepPill">18 min</div></div><div class="bibleGrid">'+cards.map(c=>'<div class="bibleCard"><div class="bibleHead" onclick="this.parentNode.classList.toggle(\'open\')"><strong>'+c[0]+'</strong><span>+</span></div><div class="bibleBody"><div class="bibleQuestion">'+c[1]+'</div><p>'+c[2]+'</p></div></div>').join("")+'</div><div class="quote">Aula 2: fato ≠ interpretação. Aula 3: quem governa? Aulas 4 e 5: desejo e emoção podem ser reais sem se tornarem soberanos.</div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Dar uma segunda chance a Miguel</button></div></section>';
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 7 · À LUZ DA BÍBLIA</div><h2>Agora sim: o texto bíblico entra no caso</h2><p>Primeiro discutam a pergunta. Depois abram a síntese e leiam o texto completo na Bíblia.</p></div><div class="stepPill">18 min</div></div><div class="bibleGrid">'+bible.map((c,i)=>'<div class="bibleCard '+(state.bibleOpen.includes(i)?"open":"")+'"><div class="bibleHead" onclick="toggleBible('+i+')"><strong>'+c[0]+'</strong><span>'+(state.bibleOpen.includes(i)?"−":"+")+'</span></div><div class="bibleBody"><div class="bibleQuestion">'+c[1]+'</div><p>'+c[2]+'</p></div></div>').join("")+'</div><div class="quote">Aula 2: fato ≠ interpretação. Aula 3: quem governa? Aulas 4 e 5: desejo e emoção podem ser reais sem se tornarem soberanos.</div><div class="notice">Abra as quatro investigações bíblicas antes de seguir.</div><div class="btnRow"><button class="btn btnPrimary" onclick="finishBible()" '+(state.bibleOpen.length<4?"disabled":"")+'>Dar uma segunda chance a Miguel</button></div></section>';
 }
+function toggleBible(i){state.bibleOpen=state.bibleOpen.includes(i)?state.bibleOpen.filter(x=>x!==i):state.bibleOpen.concat(i);render()}function finishBible(){if(state.bibleOpen.length<4)return;unlockAndGo(8)}
+const rewritePrompts=[["17h40 · crítica","O que ele poderia fazer para separar fato de interpretação?"],["18h05 · carro","Como nomear a emoção sem entregar a ela o governo?"],["20h10 · vulnerabilidade","Qual conversa, limite ou mudança de ambiente faria diferença?"],["23h34 · tentação","Como não negociar com aquilo que começou a dominar?"]];
 function rewriteScreen(){
- const rows=[
- ["17h40 · crítica","O que ele poderia fazer para separar fato de interpretação?"],
- ["18h05 · carro","Como nomear a emoção sem entregar a ela o governo?"],
- ["20h10 · vulnerabilidade","Qual conversa, limite ou mudança de ambiente faria diferença?"],
- ["23h34 · tentação","Como não negociar com aquilo que começou a dominar?"]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 8 · SEGUNDA CHANCE</div><h2>Reescrevam a noite sem alternativas</h2><p>Agora vocês conhecem Miguel, o processo e os textos. Cada homem assume pelo menos um horário.</p></div><div class="stepPill">12 min</div></div><div class="rewriteGrid">'+rows.map(r=>'<div class="rewrite"><label>'+r[0]+'</label><p>'+r[1]+'</p><textarea placeholder="Construam uma resposta concreta..."></textarea></div>').join("")+'</div><div class="quote">Espírito → verdade → decisão → limite → prática → comunidade.</div><div class="btnRow"><button class="btn btnPrimary" onclick="nextSec()">Encerrar o caso Miguel</button></div></section>';
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 8 · SEGUNDA CHANCE</div><h2>Reescrevam a noite sem alternativas</h2><p>Agora eles precisam produzir uma resposta própria. Cada homem assume pelo menos um horário.</p></div><div class="stepPill">10 min</div></div><div class="rewriteGrid">'+rewritePrompts.map((r,i)=>'<div class="rewrite"><label>'+r[0]+'</label><p>'+r[1]+'</p><textarea oninput="saveRewrite('+i+',this.value)" placeholder="Construam uma resposta concreta...">'+esc(state.rewrite[i])+'</textarea></div>').join("")+'</div><div class="quote">Espírito → verdade → decisão → limite → prática → comunidade.</div><div class="btnRow"><button class="btn btnPrimary" onclick="finishRewrite()">Encerrar o caso Miguel</button></div></section>';
 }
+function saveRewrite(i,v){state.rewrite[i]=v}function finishRewrite(){unlockAndGo(9)}
+const mirrorPrompts=["Quando sou pressionado, qual história minha mente costuma contar?","Quando estou vulnerável, para onde costumo correr?","Qual comportamento meu parece normal por fora, mas pode estar exercendo domínio?","Que limite preciso decidir antes da próxima pressão?","Quem realmente sabe quando eu não estou bem?","O que preciso confessar, conversar ou reorganizar nesta semana?"];
 function mirrorScreen(){
- const rows=[
- ["Quando sou pressionado, qual história minha mente costuma contar?"],
- ["Quando estou vulnerável, para onde costumo correr?"],
- ["Qual comportamento meu parece normal por fora, mas pode estar exercendo domínio?"],
- ["Que limite preciso decidir antes da próxima pressão?"],
- ["Quem realmente sabe quando eu não estou bem?"],
- ["O que preciso confessar, conversar ou reorganizar nesta semana?"]
- ];
- return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 9 · O ESPELHO</div><h2>Miguel não está nesta sala.</h2><p>Foi mais fácil enxergar os pontos cegos dele. Agora a investigação muda de nome. Essas respostas não são enviadas nem salvas.</p></div><div class="stepPill">10 min</div></div><div class="mirrorGrid">'+rows.map(r=>'<div class="mirror"><label>'+r[0]+'</label><textarea></textarea></div>').join("")+'</div><div class="quote">O que grita dentro de você não precisa governar você. — Gálatas 5:16</div><div class="btnRow"><button class="btn btnGhost" onclick="go(1)">Reiniciar experiência</button></div></section>';
+ return '<section class="screen active card sectionCard"><div class="sectionHead"><div><div class="badge">ATO 9 · O ESPELHO</div><h2>Miguel não está nesta sala.</h2><p>Foi mais fácil enxergar os pontos cegos dele. Agora a investigação muda de nome. Nada é enviado ou salvo.</p></div><div class="stepPill">8 min</div></div><div class="mirrorGrid">'+mirrorPrompts.map((r,i)=>'<div class="mirror"><label>'+r+'</label><textarea oninput="saveMirror('+i+',this.value)">'+esc(state.mirror[i])+'</textarea></div>').join("")+'</div><div class="quote">O que grita dentro de você não precisa governar você. — Gálatas 5:16</div><div class="btnRow"><button class="btn btnGhost" onclick="restart()">Reiniciar experiência do zero</button></div></section>';
 }
-function render(){
- setNav();
- const C=document.getElementById("content");
- C.innerHTML=state.sec===1?hero():state.sec===2?timeline():state.sec===3?choicesScreen():state.sec===4?evidenceScreen():state.sec===5?interrogationScreen():state.sec===6?reportScreen():state.sec===7?bibleScreen():state.sec===8?rewriteScreen():mirrorScreen();
- window.scrollTo({top:0,behavior:"smooth"});
+function saveMirror(i,v){state.mirror[i]=v}
+function restart(){state=initialState();render();showToast("Experiência reiniciada.")}
+function render(){setNav();const C=document.getElementById("content");C.innerHTML=state.sec===1?introScreen():state.sec===2?timelineScreen():state.sec===3?choicesScreen():state.sec===4?evidenceScreen():state.sec===5?interrogationScreen():state.sec===6?reportScreen():state.sec===7?bibleScreen():state.sec===8?rewriteScreen():mirrorScreen();if(window&&window.scrollTo)window.scrollTo({top:0,behavior:"smooth"})}
+function dataSelfTest(){
+ const errors=[];
+ if(sections.length!==9)errors.push("sections");
+ if(story.length!==5)errors.push("story");
+ if(decisions.length!==8)errors.push("decisions");
+ decisions.forEach((d,i)=>{if(d.opts.length!==4)errors.push("opts"+i);if(!photos[d.img])errors.push("photo"+i)});
+ if(bible.length!==4)errors.push("bible");
+ if(rewritePrompts.length!==4)errors.push("rewrite");
+ if(mirrorPrompts.length!==6)errors.push("mirror");
+ return {ok:errors.length===0,errors};
 }
 initNav();
 document.getElementById("teacherBtn").onclick=()=>document.getElementById("teacherPanel").classList.toggle("show");
 document.addEventListener("keydown",e=>{if(e.key.toLowerCase()==="p"&&!["TEXTAREA","INPUT"].includes(document.activeElement.tagName))document.getElementById("teacherPanel").classList.toggle("show")});
+window.__DOSSIER_SELF_TEST__=dataSelfTest();
 render();
 </script>
 </body>
